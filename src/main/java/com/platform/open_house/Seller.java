@@ -6,17 +6,14 @@ import java.util.Date;
 public class Seller extends User{
 
 	private ArrayList<String> selling = new ArrayList<String>();
-	
-	public Seller() {
-		super();
-	}
+	int Id;
 	
 	public Seller(String username, String email, Date birthday, String location, boolean barter) {
-		super();
+		super(location, location, birthday, location, barter);
 	}
 	
 	public Seller(String username, String email, Date birthday, String location) {
-		super();
+		super(location, location, birthday, location);
 	}
 	
 	public ArrayList<String> selling(){
@@ -29,5 +26,9 @@ public class Seller extends User{
 	
 	public void addToSells(String item) {
 		selling.add(item);
+	}
+	
+	public int getId() {
+		return this.Id;
 	}
 }

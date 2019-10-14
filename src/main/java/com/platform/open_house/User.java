@@ -11,9 +11,6 @@ public class User {
 	boolean status;
 	boolean barter;
 	
-	public User() {
-		
-	}
 	
 	public User(String username, String email, Date birthday, String location, boolean barter) {
 		this.username = username;

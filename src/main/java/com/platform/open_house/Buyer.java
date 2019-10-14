@@ -7,16 +7,13 @@ public class Buyer extends User {
 
 	private ArrayList<String> request = new ArrayList<String>();
 	
-	public Buyer() {
-		super();
-	}
 	
 	public Buyer(String username, String email, Date birthday, String location, boolean barter) {
-		super();
+		super(location, location, birthday, location);
 	}
 	
 	public Buyer(String username, String email, Date birthday, String location) {
-		super();
+		super(location, location, birthday, location);
 	}
 	
 	public ArrayList<String> wants(){
