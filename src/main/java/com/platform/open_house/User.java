@@ -1,18 +1,24 @@
-package com.platform.open_house.servlets;
+package com.platform.open_house;
 
 import java.util.Date;
 
 public class User {
 	
+	String firstname;
+	String lastname;
 	String username;
+	String location;
+	String phonenumber;
 	String email;
 	Date birthday;
-	String location;
+	
 	boolean status;
 	boolean barter;
 	
 	
-	public User(String username, String email, Date birthday, String location, boolean barter) {
+	public User(String firstname, String lastname, String username, String email, Date birthday, String location, boolean barter) {
+		this.firstname = firstname;
+		this.lastname = lastname;
 		this.username = username;
 		this.email = email;
 		this.birthday = birthday;
@@ -20,13 +26,40 @@ public class User {
 		this.barter = barter;
 	}
 	
-	public User(String username, String email, Date birthday, String location) {
+	public User(String firstname, String lastname, String username, String email, Date birthday, String location) {
+		this.firstname = firstname;
+		this.lastname = lastname;
 		this.username = username;
 		this.email = email;
 		this.birthday = birthday;
 		this.location = location;
 	}
 	
+	
+	public String getPhonenumber() {
+		return phonenumber;
+	}
+
+	public void setPhonenumber(String phonenumber) {
+		this.phonenumber = phonenumber;
+	}
+
+	public String getFirstname() {
+		return firstname;
+	}
+
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+
+	public String getLastname() {
+		return lastname;
+	}
+
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
+
 	public void setUsername(String username) {
 		this.username = username;
 	}

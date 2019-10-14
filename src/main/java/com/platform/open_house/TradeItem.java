@@ -1,4 +1,4 @@
-package com.platform.open_house.servlets;
+package com.platform.open_house;
 
 public class TradeItem extends Item{
 	

@@ -1,4 +1,4 @@
-package com.platform.open_house.servlets;
+package com.platform.open_house;
 
 public abstract class Item {
 	private String name;
