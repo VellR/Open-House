@@ -37,6 +37,7 @@ public class UserDAO {
 		String location;
 		String email;
 		Date birthday;
+		int id;
 		
 		try {
 			Statement stmt = mariaConnection.getConnection().createStatement();
@@ -54,16 +55,19 @@ public class UserDAO {
 					email = rs.getString("email");
 					birthday = rs.getDate("birthday");
 					phonenumber = rs.getString("phonenumber");
+					id = rs.getInt("id");
 					
 					if(barterFlag == 1) {
 						user = new User(firstname, lastname, actualUsername, email, birthday, location, true);
 						user.setStatus(true);
 						user.setPhonenumber(phonenumber);
+						user.setId(id);
 						return user;
 					}else {
 						user = new User(firstname, lastname, actualUsername, email, birthday, location);
 						user.setStatus(true);
 						user.setPhonenumber(phonenumber);
+						user.setId(id);
 						return user;
 					}				
 					
@@ -79,7 +83,7 @@ public class UserDAO {
 	}
 	
 	public void addUser(String username, String password, String firstname, String lastname, Date birthday, String email, String phonenumber, boolean barter) {
-try {
+		try {
 			
 			String query = "INSERT INTO users (username, password, firstname, lastname, birthday, email, phonenumber, barter) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 			
@@ -102,12 +106,100 @@ try {
 		
 	}
 	
-	public void removeUser() {
+	public void removeUser(int id) {
+		
+		try {
+			
+			String query = "DELETE FROM users WHERE id=?";
+			 
+			PreparedStatement statement = mariaConnection.getConnection().prepareStatement(query);
+			statement.setInt(1, id);
+			statement.executeUpdate();
+			
+			}catch(Exception e) {
+			System.out.println("Failed to remove user from database");
+		}
 		
 	}
 	
-	public void modifyUser() {
-		
+	public void updateFirstname(String firstname, int id) {
+		try {
+			
+			String query = "UPDATE users SET firstname=?WHERE id=?";
+			 
+			PreparedStatement statement = mariaConnection.getConnection().prepareStatement(query);
+			statement.setString(1, firstname);
+			statement.setInt(2, id);
+			 
+			statement.executeUpdate();
+			
+			}catch(Exception e) {
+			System.out.println("Failed to update first name.");
+		}
+	}
+	
+	public void updateLastname(String lastname, int id) {
+		try {
+			
+			String query = "UPDATE users SET lastname=?WHERE id=?";
+			 
+			PreparedStatement statement = mariaConnection.getConnection().prepareStatement(query);
+			statement.setString(1, lastname);
+			statement.setInt(2, id);
+			 
+			statement.executeUpdate();
+			
+			}catch(Exception e) {
+			System.out.println("Failed to update last name.");
+		}
+	}
+	
+	public void updateLocation(String location, int id) {
+		try {
+			
+			String query = "UPDATE users SET location=?WHERE id=?";
+			 
+			PreparedStatement statement = mariaConnection.getConnection().prepareStatement(query);
+			statement.setString(1, location);
+			statement.setInt(2, id);
+			 
+			statement.executeUpdate();
+			
+			}catch(Exception e) {
+			System.out.println("Failed to update location.");
+		}
+	}
+	
+	public void updateEmail(String email, int id) {
+		try {
+			
+			String query = "UPDATE users SET email=?WHERE id=?";
+			 
+			PreparedStatement statement = mariaConnection.getConnection().prepareStatement(query);
+			statement.setString(1, email);
+			statement.setInt(2, id);
+			 
+			statement.executeUpdate();
+			
+			}catch(Exception e) {
+			System.out.println("Failed to update email.");
+		}
+	}
+	
+	public void updatePhonenumber(String phonenumber, int id) {
+		try {
+			
+			String query = "UPDATE users SET phonenumber=?WHERE id=?";
+			 
+			PreparedStatement statement = mariaConnection.getConnection().prepareStatement(query);
+			statement.setString(1, phonenumber);
+			statement.setInt(2, id);
+			 
+			statement.executeUpdate();
+			
+			}catch(Exception e) {
+			System.out.println("Failed to update phonenumber.");
+		}
 	}
 	
 	

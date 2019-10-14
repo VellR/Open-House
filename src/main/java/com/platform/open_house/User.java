@@ -11,6 +11,7 @@ public class User {
 	String phonenumber;
 	String email;
 	Date birthday;
+	int id;
 	
 	boolean status;
 	boolean barter;
@@ -38,6 +39,17 @@ public class User {
 	
 	public String getPhonenumber() {
 		return phonenumber;
+	}
+
+	
+	public int getId() {
+		return id;
+	}
+	
+	
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public void setPhonenumber(String phonenumber) {
