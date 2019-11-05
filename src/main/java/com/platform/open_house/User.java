@@ -7,6 +7,7 @@ public class User {
 	String firstname;
 	String lastname;
 	String username;
+	String password;
 	String location;
 	String phonenumber;
 	String email;
@@ -17,14 +18,16 @@ public class User {
 	boolean barter;
 	
 	
-	public User(String firstname, String lastname, String username, String email, Date birthday, String location, boolean barter) {
+	public User(int id, String firstname, String lastname, String username, String password, String location, String phonenumber, String email, Date birthday) {
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.username = username;
+		this.password = password;
 		this.email = email;
 		this.birthday = birthday;
 		this.location = location;
-		this.barter = barter;
+		this.phonenumber = phonenumber;
+		this.id = id;
 	}
 	
 	public User(String firstname, String lastname, String username, String email, Date birthday, String location) {
@@ -43,7 +46,7 @@ public class User {
 
 	
 	public int getId() {
-		return id;
+		return this.id;
 	}
 	
 	
@@ -77,7 +80,11 @@ public class User {
 	}
 	
 	public void setPassword(String password) {
-		
+		this.password = password;
+	}
+	
+	public String getPassword() {
+		return this.password;
 	}
 	
 	public void setEmail(String email) {
@@ -86,6 +93,10 @@ public class User {
 	
 	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
+	}
+	
+	public Date getBirthday() {
+		return this.birthday;
 	}
 	
 	public void setLocation(String location) {
@@ -111,6 +122,7 @@ public class User {
 	public Date getDate() {
 		return this.birthday;
 	}
+	
 	
 	public String getLocation() {
 		return this.location;

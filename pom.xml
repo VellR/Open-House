@@ -3,6 +3,25 @@
   <groupId>OpenHouse</groupId>
   <artifactId>pom</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <dependencies>
+  	<dependency>
+    	<groupId>junit</groupId>
+    	<artifactId>junit</artifactId>
+    	<version>4.12</version>
+    	<scope>test</scope>
+	</dependency>
+	<dependency>
+    	<groupId>org.hamcrest</groupId>
+    	<artifactId>hamcrest</artifactId>
+    	<version>2.1</version>
+    	<scope>test</scope>
+	</dependency>
+	<dependency>
+    	<groupId>org.mariadb.jdbc</groupId>
+    	<artifactId>mariadb-java-client</artifactId>
+    	<version>2.4.2</version>
+	</dependency>
+  </dependencies>
   <build>
     <plugins>
       <plugin>

@@ -1,52 +1,56 @@
 package com.platform.open_house;
 
-public abstract class Item {
-	private String name;
-	private int id;
-	private String description;
+import java.sql.Date;
+
+public class Item {
 	private int ownerId;
+	private int tradeId;
+	private int buyerId;
+	private int itemId;
+	private String name;
+	private String description;
 	private double price;
 	private boolean barter;
-	private String barterItem;
+	private String desiredBarter;
+	private Date expiration;
 	
-	public Item(String name, String description, int ownerId, double price, boolean barter, String barterItem) {
-		this.name = name;
-		this.description = description;
+	public Item(int ownerId, int tradeId, int buyerId, int itemId, String name, double price) {
 		this.ownerId = ownerId;
-		this.price = price;
-		this.barter = barter;
-		this.barterItem = barterItem;
-	}
-	
-	public Item(String name, String description, int ownerId, double price) {
+		this.tradeId = tradeId;
+		this.buyerId = buyerId;
+		this.itemId = itemId;
 		this.name = name;
-		this.description = description;
-		this.ownerId = ownerId;
 		this.price = price;
 	}
 	
-	public Item(String name, String description, int ownerId, boolean barter, String barterItem) {
+	public Item(int ownerId, int tradeId, int buyerId, int itemId, String name, String description, double price) {
+		this.ownerId = ownerId;
+		this.tradeId = tradeId;
+		this.buyerId = buyerId;
+		this.itemId = itemId;
 		this.name = name;
 		this.description = description;
-		this.ownerId = ownerId;
-		this.barter = barter;
-		this.barterItem = barterItem;
+		this.price = price;
 	}
 	
+	public Item(int ownerId, int tradeId, int buyerId, int itemId, String name, String description, double price, boolean barter, String desiredBarter, Date expiration) {
+		this.ownerId = ownerId;
+		this.tradeId = tradeId;
+		this.buyerId = buyerId;
+		this.itemId = itemId;
+		this.name = name;
+		this.description = description;
+		this.price = price;
+		this.barter = barter;
+		this.desiredBarter = desiredBarter;
+		this.expiration = expiration;
+	}
 	
 	public String getName() {
 		return name;
 	}
-
-	private void generateId() {
-		
-	}
-	
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
+	public void setName(String name) {
+		this.name = name;
 	}
 	public String getDescription() {
 		return description;
@@ -54,29 +58,35 @@ public abstract class Item {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public int getOwnerId() {
-		return ownerId;
-	}
-	public void setOwnerId(int ownerId) {
-		this.ownerId = ownerId;
-	}
 	public double getPrice() {
 		return price;
 	}
 	public void setPrice(double price) {
 		this.price = price;
 	}
-	public boolean willBarter() {
+	public String getDesiredBarter() {
+		return desiredBarter;
+	}
+	public void setDesiredBarter(String desiredBarter) {
+		this.desiredBarter = desiredBarter;
+	}
+	public int getOwnerId() {
+		return ownerId;
+	}
+	public int getBuyerId() {
+		return buyerId;
+	}
+	public int getItemId() {
+		return itemId;
+	}
+	public boolean isBarter() {
 		return barter;
 	}
-	public void setBarter(boolean barter) {
-		this.barter = barter;
+	public Date getExpiration() {
+		return expiration;
 	}
-	public String getBarterItem() {
-		return barterItem;
-	}
-	public void setBarterItem(String barterItem) {
-		this.barterItem = barterItem;
+	public int getTradeId() {
+		return this.tradeId;
 	}
 	
 	
