@@ -33,7 +33,7 @@ public class UserController {
 			model.addAttribute("user", user);
 			return "Login";
 		}
-		return "Home";
+		return "index";
 	}
 	
 	@GetMapping("/register")
@@ -59,6 +59,7 @@ public class UserController {
 		}
 			
 		Integer id = userRepository.createUser(user);
+		
 		if(id == -1) {
 			model.addAttribute("errorMessage", "Create student failed.");
 			return "Registration";

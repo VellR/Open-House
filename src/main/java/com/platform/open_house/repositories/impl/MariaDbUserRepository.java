@@ -32,7 +32,7 @@ public class MariaDbUserRepository implements UserRepository{
 		Integer id = -1;
 		
 		
-		System.out.println("firstName: " + user.getUsername());
+		System.out.println("-----firstName: " + user.getUsername());
 		System.out.println("lastName: " + user.getLastName());
 		System.out.println("username: " + user.getUsername());
 		System.out.println("password: " + user.getPassword());
