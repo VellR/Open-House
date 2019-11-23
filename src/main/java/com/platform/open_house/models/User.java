@@ -1,7 +1,5 @@
 package com.platform.open_house.models;
 
-import java.util.Date;
-
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.Email;

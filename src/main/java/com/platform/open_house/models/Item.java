@@ -1,7 +1,5 @@
 package com.platform.open_house.models;
 
-import java.util.Date;
-
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
@@ -17,11 +15,11 @@ public class Item {
 	
 	private Double price;
 	
-	private Date expiration;
+	private String expiration;
 	
 	public Item() {}
 	
-	public Item(Integer itemId, Integer userId, String name, String description, Double price, Date expiration) {
+	public Item(Integer itemId, Integer userId, String name, String description, Double price, String expiration) {
 		this.itemId = itemId;
 		this.userId = userId;
 		this.name = name;
@@ -70,12 +68,12 @@ public class Item {
 		this.price = price;
 	}
 
-	public Date getExpiration() {
+	public String getExpiration() {
 		return expiration;
 	}
 
-	public void setExpiration(Date expiration) {
+	public void setExpiration(String expiration) {
 		this.expiration = expiration;
 	}
-	
+
 }
