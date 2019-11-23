@@ -47,6 +47,14 @@ public class MariaDbTradeRepository implements TradeRepository{
 		
 		return id;
 	}
+	
+	@Override
+	public List<Trade> getAllTradesBySellerId(int userId) {
+		String selectTrades = "SELECT * FROM trades WHERE sellerId=" + userId;
+
+		List<Trade> result = mariaDbJdbcTemplate.query(selectTrades, new TradeMapper());
+		return result;
+	}
 
 	@Override
 	public Trade getTradeById(Integer id) throws SQLException {
@@ -119,5 +127,7 @@ public class MariaDbTradeRepository implements TradeRepository{
 			return trade;
 		}
 	}
+
+	
 
 }

@@ -3,6 +3,9 @@ package com.platform.open_house.repositories.impl;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,18 +30,27 @@ public class MariaDbItemRepository implements ItemRepository{
 	@Override
 	public Integer createItem(Item item) {
 		Integer id = -1;
+		
+		 Date expiration = null;
+		    String date = item.getExpiration().replace("-", "/");
+			try {
+				expiration = new SimpleDateFormat("yyyy/MM/dd").parse(date);
+			} catch (ParseException e) {
+				System.out.println("Date error: " + e.getMessage());
+				e.printStackTrace();
+			} 
+
 
 		MapSqlParameterSource params = new MapSqlParameterSource();
-		params.addValue("itemId", item.getItemId());
 		params.addValue("userId", item.getUserId());
 		params.addValue("name", item.getName());
 		params.addValue("description", item.getDescription());
 		params.addValue("price", item.getPrice());
-		params.addValue("expiration", item.getExpiration());
+		params.addValue("expiration", new java.sql.Date(expiration.getTime()));
 
-		String createItemSql = "INSERT INTO items (itemId, userId, name, description,"
+		String createItemSql = "INSERT INTO items (userId, name, description,"
 				+ " price, expiration) VALUES "
-				+ "(:itemId, :userId, :name, :description, :price, :expiration";
+				+ "(:userId, :name, :description, :price, :expiration)";
 
 		KeyHolder keyHolder = new GeneratedKeyHolder();
 		Integer createResult = mariaDbJdbcTemplate.update(createItemSql, 
@@ -74,6 +86,14 @@ public class MariaDbItemRepository implements ItemRepository{
 	@Override
 	public List<Item> getAllItems() throws ClassNotFoundException, IOException, SQLException {
 		String selectItems = "SELECT * FROM items";
+
+		List<Item> result = mariaDbJdbcTemplate.query(selectItems, new ItemMapper());
+		return result;
+	}
+	
+	@Override
+	public List<Item> getAllItemsByUserId(Integer userId) {
+		String selectItems = "SELECT * FROM items WHERE userId=" + userId;
 
 		List<Item> result = mariaDbJdbcTemplate.query(selectItems, new ItemMapper());
 		return result;
@@ -118,12 +138,17 @@ public class MariaDbItemRepository implements ItemRepository{
 		@Override
 		public Item mapRow(ResultSet rs, int rowNum) throws SQLException {
 			Item item = new Item();
+			
+			Date date = new java.util.Date(rs.getDate(6).getTime());  
+			SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");  
+			String expiration = formatter.format(date); 
+			
 			item.setItemId(rs.getInt(1));
 			item.setUserId(rs.getInt(2));
 			item.setName(rs.getString(3));
 			item.setDescription(rs.getString(4));
 			item.setPrice(rs.getDouble(5));
-			item.setExpiration(rs.getDate(6));
+			item.setExpiration(expiration);
 			return item;
 		}
 	}

@@ -31,16 +31,6 @@ public class MariaDbUserRepository implements UserRepository{
 	public Integer createUser(User user) {
 		Integer id = -1;
 		
-		
-		System.out.println("-----firstName: " + user.getUsername());
-		System.out.println("lastName: " + user.getLastName());
-		System.out.println("username: " + user.getUsername());
-		System.out.println("password: " + user.getPassword());
-		System.out.println("location: " + user.getLocation());
-		System.out.println("phoneNumber: " + user.getPhoneNumber());
-		System.out.println("email: " + user.getEmail());
-		System.out.println("date: " + user.getBirthday());
-		
 	    Date birthday = null;
 	    String date = user.getBirthday().replace("-", "/");
 		try {
