@@ -1,7 +1,5 @@
 package com.platform.open_house.controllers;
 
-import java.util.Date;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,10 +28,17 @@ public class UserController {
 	public String loginUser(@RequestParam String username, @RequestParam String password, Model model) {
 		User user = userRepository.loginUser(username, password);
 		if(user == null) {
-			model.addAttribute("user", user);
+			
 			return "Login";
 		}
-		return "index";
+		model.addAttribute("userId", user.getUserId());
+		return "redirect:/home";
+	}
+	
+	@GetMapping("/home")
+	public String homePage(@ModelAttribute("userId") Integer userId, Model model) {
+		model.addAttribute("userId", userId);
+		return "Home";
 	}
 	
 	@GetMapping("/register")
@@ -45,15 +50,6 @@ public class UserController {
 	@PostMapping("/registerUser")
 	public String registerUser(@Valid @ModelAttribute("user") User user, BindingResult result, Model model) {
 		
-			System.out.println("firstName: " + user.getFirstName());
-			System.out.println("lastName: " + user.getLastName());
-			System.out.println("username: " + user.getUsername());
-			System.out.println("password: " + user.getPassword());
-			System.out.println("location: " + user.getLocation());
-			System.out.println("phoneNumber: " + user.getPhoneNumber());
-			System.out.println("email: " + user.getEmail());
-			System.out.println("birthday: " + user.getBirthday().toString());
-		
 		if(result.hasErrors()) {
 			return "Registration";
 		}
@@ -61,7 +57,7 @@ public class UserController {
 		Integer id = userRepository.createUser(user);
 		
 		if(id == -1) {
-			model.addAttribute("errorMessage", "Create student failed.");
+			model.addAttribute("errorMessage", "Create user failed.");
 			return "Registration";
 		}
 		
