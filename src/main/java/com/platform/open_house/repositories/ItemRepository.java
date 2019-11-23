@@ -11,6 +11,7 @@ public interface ItemRepository {
 	Item getItemById(Integer id) throws SQLException;
 	
 	List<Item> getAllItems() throws ClassNotFoundException, IOException, SQLException;
+	List<Item> getAllItemsByUserId(Integer userId);
 	
 	Boolean updateItem(Item item);
 	Boolean deleteItem(Integer itemId);
