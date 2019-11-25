@@ -15,4 +15,5 @@ public interface ItemRepository {
 	
 	Boolean updateItem(Item item);
 	Boolean deleteItem(Integer itemId);
+	List<Item> getAllItemsNotByUserId(Integer userId);
 }

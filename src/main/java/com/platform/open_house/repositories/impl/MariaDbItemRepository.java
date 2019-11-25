@@ -98,6 +98,14 @@ public class MariaDbItemRepository implements ItemRepository{
 		List<Item> result = mariaDbJdbcTemplate.query(selectItems, new ItemMapper());
 		return result;
 	}
+	
+	@Override
+	public List<Item> getAllItemsNotByUserId(Integer userId){
+		String selectItems = "SELECT * FROM items WHERE userId != " + userId;
+
+		List<Item> result = mariaDbJdbcTemplate.query(selectItems, new ItemMapper());
+		return result;
+	}
 
 	@Override
 	public Boolean updateItem(Item item) {

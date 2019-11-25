@@ -45,6 +45,15 @@ public class ItemController {
 		return "SearchItems";
 	}
 	
+	@GetMapping("/home")
+	public String homePage(@ModelAttribute("userId") Integer userId, Model model) throws ClassNotFoundException, IOException, SQLException {
+		List<Item> itemList = itemRepository.getAllItemsNotByUserId(userId);
+		
+		model.addAttribute("feedItem", itemList);
+		model.addAttribute("userId", userId);
+		return "Home";
+	}
+	
 	@GetMapping("/searchItems/{userId}")
 	public String searchItems(@PathVariable Integer userId, Model model) {
 		return "SearchItems";

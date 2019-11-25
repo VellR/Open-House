@@ -35,12 +35,6 @@ public class UserController {
 		return "redirect:/home";
 	}
 	
-	@GetMapping("/home")
-	public String homePage(@ModelAttribute("userId") Integer userId, Model model) {
-		model.addAttribute("userId", userId);
-		return "Home";
-	}
-	
 	@GetMapping("/register")
 	public String registerPage(Model model) {
 		model.addAttribute("user", new User());
