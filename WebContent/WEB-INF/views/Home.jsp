@@ -9,7 +9,7 @@
 <body>
 	<a href="${pageContext.request.contextPath}/userItems/${userId}">User Items</a>
 	<a href="${pageContext.request.contextPath}/userTrades/${userId}">User Trades</a>
-	<a href="${pageContext.request.contextPath}/browseItems">Browse Items</a>
+	<a href="${pageContext.request.contextPath}/browesableItems/${userId}">Browse Items</a>
 	
 </body>
 </html>

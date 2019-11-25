@@ -1,5 +1,7 @@
 package com.platform.open_house.controllers;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -27,6 +29,25 @@ public class ItemController {
 		
 		model.addAttribute("item", new Item());
 		return "UserItem";
+	}
+	
+	@GetMapping("/browesableItems/{userId}")
+	public String browseItems(@PathVariable Integer userId, Model model) throws ClassNotFoundException, IOException, SQLException {
+		List<Item> itemList = itemRepository.getAllItems();
+		
+		for(Item item: itemList) {
+			System.out.println(item.getName());
+		}
+		
+		model.addAttribute("avaiableItems", itemList);
+		model.addAttribute("item", new Item());
+		
+		return "SearchItems";
+	}
+	
+	@GetMapping("/searchItems/{userId}")
+	public String searchItems(@PathVariable Integer userId, Model model) {
+		return "SearchItems";
 	}
 	
 	@PostMapping("/addItem/{userId}")

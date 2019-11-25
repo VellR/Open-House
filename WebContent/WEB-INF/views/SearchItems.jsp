@@ -5,17 +5,17 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>My Trades</title>
+<title>Browse Items</title>
 </head>
 <body>
-
-	<c:forEach items = "${buyerTradeList}" var = "trade">
+	
+	<c:forEach items = "${avaiableItems}" var = "item">
 	    <tr>
-		<td><a href="#">${trade.key}</a></td>
-        <td>${trade.value.name}</td>
-		<td>${trade.value.price}</td>
-		<td>${trade.value.description}</td>
-		<td>${trade.value.expiration}</td><br>
+		<td><a href="#">${item.itemId}</a></td>
+        <td>${item.name}</td>
+		<td>${item.price}</td>
+		<td>${item.expiration}</td>
+		<td>${item.description}</td><br>
 	    </tr>
 	</c:forEach>
 
