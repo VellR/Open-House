@@ -1,5 +1,7 @@
 package com.platform.open_house.controllers;
 
+import java.sql.SQLException;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -33,6 +36,34 @@ public class UserController {
 		}
 		model.addAttribute("userId", user.getUserId());
 		return "redirect:/home";
+	}
+	
+	@GetMapping("/profile/{userId}")
+	public String profilePage(@PathVariable Integer userId, Model model) throws SQLException {
+		
+		User currentUser = userRepository.getUserById(userId);
+		
+		model.addAttribute("currentUser", currentUser);
+		model.addAttribute("user", new User());
+		
+		return "Profile";
+	}
+	
+	@PostMapping("/updateUser/{userId}")
+	public String updateUser(@Valid @ModelAttribute("user") User user, @PathVariable Integer userId, BindingResult result, Model model) throws SQLException {
+		
+		User currentUser = userRepository.getUserById(userId);
+		
+		System.out.println("Ping");
+		
+//		if(currentUser.getPassword() == currentPassword) {
+//			
+//			if(userRepository.updateUser(user)) {
+//				return "redirect:/home";
+//			}
+//		}
+		
+		return "Profile";
 	}
 	
 	@GetMapping("/register")
