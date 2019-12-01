@@ -16,7 +16,32 @@
 </head>
 <body>
 
-	<div class="container">
+<div class="row">
+	<div class="col-2">
+		<ul class="nav flex-column">
+  			<li class="nav-item">
+    			<a class="nav-link" href="${pageContext.request.contextPath}/homeWithId/${userId}">Feed</a>
+  			</li>
+  			<li class="nav-item">
+    			<a class="nav-link" href="${pageContext.request.contextPath}/userItems/${userId}">My Items</a>
+  			</li>
+  			<li class="nav-item">
+    			<a class="nav-link" href="${pageContext.request.contextPath}/userTrades/${userId}">Active Trades</a>
+  			</li>
+  			<li class="nav-item">
+    			<a class="nav-link" href="${pageContext.request.contextPath}/browesableItems/${userId}">All Listed Items</a>
+  			</li>
+  			<li class="nav-item">
+    			<a class="nav-link" href="${pageContext.request.contextPath}/profile/${userId}">Profile</a>
+  			</li>
+  			<li class="nav-item">
+    			<a class="nav-link" href="${pageContext.request.contextPath}/">Logout</a>
+  			</li>
+		</ul>
+	</div>
+	
+	<div class="col-6">
+		<div class="container">
             <form:form class="form-horizontal" action="${pageContext.request.contextPath}/addItem/${userId}" method="post" modelAttribute="item" role="form">
             <fieldset>
                 <h2>New Item</h2>
@@ -57,12 +82,15 @@
         
         <c:forEach items = "${itemList}" var = "item">
 	    <tr>
-		<td><a href="${pageContext.request.contextPath }/itemById/${item.itemId}">
+		<td><a href="${pageContext.request.contextPath}/item/${userId}/${item.itemId}">
                     ${item.name}</a></td>
 		<td>${item.price}</td>
-		<td>${item.description}</td><br>
+		<td>${item.description}</td>
+		<td><a href="${pageContext.request.contextPath}/removeItem/${item.itemId}/${userId}">remove</a></td><br>
 	    </tr>
 	</c:forEach>
+	</div>
+</div>
 
 </body>
 </html>
