@@ -18,7 +18,7 @@
 	<div class="col-2">
 		<ul class="nav flex-column">
   			<li class="nav-item">
-    			<a class="nav-link" href="#">Feed</a>
+    			<a class="nav-link" href="${pageContext.request.contextPath}/homeWithId/${userId}">Feed</a>
   			</li>
   			<li class="nav-item">
     			<a class="nav-link" href="${pageContext.request.contextPath}/userItems/${userId}">My Items</a>
@@ -27,7 +27,16 @@
     			<a class="nav-link" href="${pageContext.request.contextPath}/userTrades/${userId}">Active Trades</a>
   			</li>
   			<li class="nav-item">
+    			<a class="nav-link" href="${pageContext.request.contextPath}/request/${userId}">Item Request</a>
+  			</li>
+  			<li class="nav-item">
     			<a class="nav-link" href="${pageContext.request.contextPath}/browesableItems/${userId}">All Listed Items</a>
+  			</li>
+  			<li class="nav-item">
+    			<a class="nav-link" href="${pageContext.request.contextPath}/profile/${userId}">Profile</a>
+  			</li>
+  			<li class="nav-item">
+    			<a class="nav-link" href="${pageContext.request.contextPath}/">Logout</a>
   			</li>
 		</ul>
 	</div>
@@ -38,13 +47,13 @@
 	    
 	    	<div class="list-group">
  
- 				<a href="${pageContext.request.contextPath}/item/${item.itemId}" class="list-group-item list-group-item-action flex-column align-items-start">
+ 				<a href="${pageContext.request.contextPath}/item/${userId}/${item.itemId}" class="list-group-item list-group-item-action flex-column align-items-start">
     				<div class="d-flex w-100 justify-content-between">
       					<h5 class="mb-1">${item.name}</h5>
       					<small class="text-muted">Expires on: ${item.expiration}</small>
     				</div>
     				<small class="text-muted">$${item.price}</small>
-    				<p class="mb-1">${item.description}</p>
+    				<p class="mb-1">${item.description}</p><br>
   				</a>
  
 			</div>
