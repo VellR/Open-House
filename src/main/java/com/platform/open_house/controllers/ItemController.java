@@ -28,6 +28,10 @@ public class ItemController {
 	public String userItemPage(@PathVariable Integer userId, Model model) {
 		
 		model.addAttribute("item", new Item());
+		
+		List<Item> itemList = itemRepository.getAllItemsByUserId(userId);
+		model.addAttribute("itemList", itemList);
+		
 		return "UserItem";
 	}
 	
@@ -54,6 +58,26 @@ public class ItemController {
 		return "Home";
 	}
 	
+	@GetMapping("/homeWithId/{userId}")
+	public String homeWithIdPage(@PathVariable Integer userId, Model model) throws ClassNotFoundException, IOException, SQLException {
+		List<Item> itemList = itemRepository.getAllItemsNotByUserId(userId);
+		
+		model.addAttribute("feedItem", itemList);
+		model.addAttribute("userId", userId);
+		return "Home";
+	}
+	
+	@GetMapping("item/{userId}/{itemId}")
+	public String itemById(@PathVariable Integer userId, @PathVariable Integer itemId, Model model) throws SQLException {
+		
+		Item item = itemRepository.getItemById(itemId);
+		
+		model.addAttribute("item", item);
+		model.addAttribute("userId", userId);
+		
+		return "Item";
+	}
+	
 	@GetMapping("/searchItems/{userId}")
 	public String searchItems(@PathVariable Integer userId, Model model) {
 		return "SearchItems";
@@ -78,5 +102,14 @@ public class ItemController {
 		}
 		
 		return "UserItem";
+	}
+	
+	@GetMapping("/removeItem/{itemId}/{userId}")
+	public String removeItem(@PathVariable Integer itemId, @PathVariable Integer userId, Model model) {
+		
+		itemRepository.deleteItem(itemId);
+		
+		model.addAttribute("userId", userId);
+		return "forward:/userItems/"+ userId;
 	}
 }
