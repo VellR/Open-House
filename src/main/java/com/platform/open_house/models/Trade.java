@@ -20,6 +20,12 @@ public class Trade {
 		this.sellerId = sellerId;
 		this.buyerId = buyerId;
 	}
+	
+	public Trade(Integer itemId, Integer sellerId, Integer buyerId) {
+		this.itemId = itemId;
+		this.sellerId = sellerId;
+		this.buyerId = buyerId;
+	}
 
 	public Integer getTradeId() {
 		return tradeId;
