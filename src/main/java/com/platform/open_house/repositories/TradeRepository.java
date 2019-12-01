@@ -12,7 +12,9 @@ public interface TradeRepository {
 	
 	List<Trade> getAllTrades() throws ClassNotFoundException, IOException, SQLException;
 	List<Trade> getAllTradesBySellerId(int userId);
+	List<Trade> getAllTradesByBuyerId(int userId);
 	
 	Boolean updateTrade(Trade item);
 	Boolean deleteTrade(Integer tradeId);
+	
 }

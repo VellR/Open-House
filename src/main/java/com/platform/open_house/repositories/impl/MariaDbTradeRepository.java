@@ -29,13 +29,12 @@ public class MariaDbTradeRepository implements TradeRepository{
 		Integer id = -1;
 
 		MapSqlParameterSource params = new MapSqlParameterSource();
-		params.addValue("tradeId", trade.getTradeId());
 		params.addValue("itemId", trade.getItemId());
 		params.addValue("sellerId", trade.getSellerId());
 		params.addValue("buyerId", trade.getBuyerId());
 
-		String createTradeSql = "INSERT INTO trades (tradeId, itemId, sellerId, buyerId) VALUES "
-				+ "(:tradeId, :itemId, :sellerId, :buyerId)";
+		String createTradeSql = "INSERT INTO trades (itemId, sellerId, buyerId) VALUES "
+				+ "(:itemId, :sellerId, :buyerId)";
 
 		KeyHolder keyHolder = new GeneratedKeyHolder();
 		Integer createResult = mariaDbJdbcTemplate.update(createTradeSql, 
@@ -51,6 +50,14 @@ public class MariaDbTradeRepository implements TradeRepository{
 	@Override
 	public List<Trade> getAllTradesBySellerId(int userId) {
 		String selectTrades = "SELECT * FROM trades WHERE sellerId=" + userId;
+
+		List<Trade> result = mariaDbJdbcTemplate.query(selectTrades, new TradeMapper());
+		return result;
+	}
+	
+	@Override
+	public List<Trade> getAllTradesByBuyerId(int userId) {
+		String selectTrades = "SELECT * FROM trades WHERE buyerId=" + userId;
 
 		List<Trade> result = mariaDbJdbcTemplate.query(selectTrades, new TradeMapper());
 		return result;
@@ -127,7 +134,4 @@ public class MariaDbTradeRepository implements TradeRepository{
 			return trade;
 		}
 	}
-
-	
-
 }
