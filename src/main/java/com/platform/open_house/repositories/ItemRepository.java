@@ -8,12 +8,13 @@ import com.platform.open_house.models.Item;
 
 public interface ItemRepository {
 	Integer createItem(Item item);
-	Item getItemById(Integer id) throws SQLException;
+	Item getItemById(Integer itemId) throws SQLException;
 	
 	List<Item> getAllItems() throws ClassNotFoundException, IOException, SQLException;
 	List<Item> getAllItemsByUserId(Integer userId);
+	List<Item> getAllItemsNotByUserId(Integer userId);
 	
 	Boolean updateItem(Item item);
 	Boolean deleteItem(Integer itemId);
-	List<Item> getAllItemsNotByUserId(Integer userId);
+	
 }

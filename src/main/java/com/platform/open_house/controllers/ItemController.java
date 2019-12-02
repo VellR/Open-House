@@ -90,7 +90,7 @@ public class ItemController {
 			return "UserItem";
 		}
 		
-		item.setItemId(userId);
+		item.setUserId(userId);
 		Integer id = itemRepository.createItem(item);
 		
 		List<Item> itemList = itemRepository.getAllItemsByUserId(userId);

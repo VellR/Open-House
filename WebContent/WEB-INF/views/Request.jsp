@@ -52,36 +52,36 @@
                     <label for="itemName" class="col-sm-3 control-label">Item Name</label>
                     <div class="col-sm-9">
                         <form:input type="text" path="itemName" name="itemName" id="itemName" placeholder="Item name" class="form-control"/>
-                         <p><form:errors path="name" class="error"/></p>
+                         <p><form:errors path="itemName" class="error"/></p>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="itemDescription" class="col-sm-3 control-label">Item Description</label>
                     <div class="col-sm-9">
                         <form:input path="itemDescription" type="textarea" name="itemDescription" id="itemDescription" placeholder="Item description..." class="form-control"/>
-                         <p><form:errors path="description" class="error"/></p>
+                         <p><form:errors path="itemDescription" class="error"/></p>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="itemPrice" class="col-sm-3 control-label">Item Price</label>
                     <div class="col-sm-9">
-                        <form:input path="itemPrice" type="number" name="itemPrice" id="itemPrice" placeholder="0.00" class="form-control"/>
-                         <p><form:errors path="price" class="error"/></p>
+                        <form:input path="itemPrice" type="text" name="itemPrice" id="itemPrice" placeholder="0.00" class="form-control"/>
+                         <p><form:errors path="itemPrice" class="error"/></p>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="isBarter" class="col-sm-3 control-label">Would you like to barter?</label>
+                    <label for="barter" class="col-sm-3 control-label">Would you like to barter?</label>
                     <div class="col-sm-9">
-                        <form:input path="isBarter" type="radio" name="true" id="true" value="true" class="form-control"/>
-                        <form:input path="isBarter" type="radio" name="false" id="false" value="false" class="form-control"/>
-                        <p><form:errors path="isBarter" class="error"/></p>
+                       Yes <form:radiobutton path="barter" id="yes" value="true" class="form-control"/>
+                       No  <form:radiobutton path="barter" id="no" value="false" class="form-control"/>
+                        <p><form:errors path="barter" class="error"/></p>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="barterItem" class="col-sm-3 control-label">Preferred Barter Item:</label>
                     <div class="col-sm-9">
                         <form:input path="barterItem" type="text" name="barterItem" id="barterItem" placeholder="Item Name" class="form-control"/>
-                         <p><form:errors path="price" class="error"/></p>
+                         <p><form:errors path="barterItem" class="error"/></p>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary btn-block">Make Request</button>
@@ -94,10 +94,10 @@
         <c:forEach items = "${requestList}" var = "request">
 	    <tr>
 		<td><a href="#">
-                    ${request.name}</a></td>
-		<td>${request.description}</td>
-		<td>${request.price}</td>
-		<td>${request.isBarter}</td>
+                    ${request.itemName}</a></td>
+		<td>${request.itemDescription}</td>
+		<td>${request.itemPrice}</td>
+		<td>${request.barter}</td>
 		<td>${request.barterItem}</td>
 		<td><a href="${pageContext.request.contextPath}/removeRequest/${request.requestId}/${userId}">remove</a></td><br>
 	    </tr>
