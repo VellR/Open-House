@@ -38,11 +38,6 @@ public class ItemController {
 	@GetMapping("/browesableItems/{userId}")
 	public String browseItems(@PathVariable Integer userId, Model model) throws ClassNotFoundException, IOException, SQLException {
 		List<Item> itemList = itemRepository.getAllItems();
-		
-		for(Item item: itemList) {
-			System.out.println(item.getName());
-		}
-		
 		model.addAttribute("avaiableItems", itemList);
 		model.addAttribute("item", new Item());
 		

@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.platform.open_house.models.Item;
 import com.platform.open_house.models.Trade;
-import com.platform.open_house.models.User;
 import com.platform.open_house.repositories.ItemRepository;
 import com.platform.open_house.repositories.TradeRepository;
 import com.platform.open_house.repositories.UserRepository;

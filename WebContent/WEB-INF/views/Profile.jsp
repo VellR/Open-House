@@ -20,9 +20,9 @@
 <body>
 
 <div class="row">
-<div class="col-lg-3">
+	<div class="col-lg-3">
 		
-			<ul class="nav flex-column">
+		<ul class="nav flex-column">
   			<li class="nav-item">
     			<a class="nav-link" href="${pageContext.request.contextPath}/homeWithId/${userId}">Feed</a>
   			</li>
@@ -42,11 +42,11 @@
     			<a class="nav-link" href="${pageContext.request.contextPath}/">Logout</a>
   			</li>
 		</ul>
-		</div>
+	</div>
 
-<div class="col-lg-9">
-            <form:form class="form-horizontal" action="${pageContext.request.contextPath}/updateUser/${userId}" method="post" modelAttribute="user" role="form">
-            <fieldset>
+	<div class="col-lg-9">
+		<form:form class="form-horizontal" action="${pageContext.request.contextPath}/updateUser/${userId}" method="post" modelAttribute="user" role="form">
+			<fieldset>
                 <h2>Profile</h2>
                 <div class="form-group">
                     <label for="firstName" class="col-sm-3 control-label">First Name: ${currentUser.firstName}</label>
@@ -56,7 +56,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="lastName" class="col-sm-3 control-label">Last Name: ${currentUser.lastName} </label>
+                    <label for="lastName" class="col-sm-3 control-label">Last Name: ${currentUser.lastName}</label>
                     <div class="col-sm-9">
                         <form:input path="lastName" type="hidden" name="lastName" id="lastName" value="${currentUser.lastName}" class="form-control"/>
                          <p><form:errors path="lastName" class="error"/></p>
@@ -70,7 +70,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="username" class="col-sm-3 control-label">Username: ${currentUser.username} </label>
+                    <label for="username" class="col-sm-3 control-label">Username: ${currentUser.username}</label>
                     <div class="col-sm-9">
                         <form:input path="username" type="hidden" name="username" id="username" value="${currentUser.username}" class="form-control"/>
                          <p><form:errors path="username" class="error"/></p>
@@ -96,21 +96,21 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="location" class="col-sm-3 control-label">Location: ${currentUser.location} </label>
+                    <label for="location" class="col-sm-3 control-label">Location: ${currentUser.location}</label>
                     <div class="col-sm-9">
                         <form:input path="location" type="text" name="location" id="location" placeholder="Location" class="form-control"/>
                          <p><form:errors path="location" class="error"/></p>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="birthDate" class="col-sm-3 control-label">Date of Birth: ${currentUser.birthday} </label>
+                    <label for="birthDate" class="col-sm-3 control-label">Date of Birth: ${currentUser.birthday}</label>
                     <div class="col-sm-9">
                         <form:input path="birthday" type="hidden" name="birthday" value="${currentUser.birthday}" id="birthday" class="form-control"/>
                         <p><form:errors path="birthday" class="error"/></p>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="phoneNumber" class="col-sm-3 control-label">Phone number: ${currentUser.phoneNumber} </label>
+                    <label for="phoneNumber" class="col-sm-3 control-label">Phone number: ${currentUser.phoneNumber}</label>
                     <div class="col-sm-9">
                         <form:input path="phoneNumber" type="tel" name="phoneNumber" id="phoneNumber" placeholder="Phone number" class="form-control"/>
                          <p><form:errors path="phoneNumber" class="error"/></p>

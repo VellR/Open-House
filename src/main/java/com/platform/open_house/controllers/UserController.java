@@ -52,9 +52,11 @@ public class UserController {
 	@PostMapping("/updateUser/{userId}")
 	public String updateUser(@Valid @ModelAttribute("user") User user, @PathVariable Integer userId, BindingResult result, Model model) throws SQLException {
 		
-		User currentUser = userRepository.getUserById(userId);
+		//User currentUser = userRepository.getUserById(userId);
 		
-		System.out.println("Ping");
+		if(userRepository.updateUser(user)) {
+			return "redirect:/home";
+		}
 		
 //		if(currentUser.getPassword() == currentPassword) {
 //			

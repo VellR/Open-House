@@ -43,10 +43,7 @@
 	
 	<div class="col-6">
 		<c:forEach items = "${feedItem}" var = "item">
-	    
-	    
 	    	<div class="list-group">
- 
  				<a href="${pageContext.request.contextPath}/item/${userId}/${item.itemId}" class="list-group-item list-group-item-action flex-column align-items-start">
     				<div class="d-flex w-100 justify-content-between">
       					<h5 class="mb-1">${item.name}</h5>

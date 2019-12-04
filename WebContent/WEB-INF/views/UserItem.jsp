@@ -82,11 +82,11 @@
         
         <c:forEach items = "${itemList}" var = "item">
 	    <tr>
-		<td><a href="${pageContext.request.contextPath}/item/${userId}/${item.itemId}">
-                    ${item.name}</a></td>
-		<td>${item.price}</td>
-		<td>${item.description}</td>
-		<td><a href="${pageContext.request.contextPath}/removeItem/${item.itemId}/${userId}">remove</a></td><br>
+			<td><a href="${pageContext.request.contextPath}/item/${userId}/${item.itemId}">
+				${item.name}</a></td>
+			<td>${item.price}</td>
+			<td>${item.description}</td>
+			<td><a href="${pageContext.request.contextPath}/removeItem/${item.itemId}/${userId}">remove</a></td><br>
 	    </tr>
 	</c:forEach>
 	</div>
