@@ -44,15 +44,26 @@
 	<div class="col-6">
 		<c:forEach items = "${feedItem}" var = "item">
 	    	<div class="list-group">
- 				<a href="${pageContext.request.contextPath}/item/${userId}/${item.itemId}" class="list-group-item list-group-item-action flex-column align-items-start">
-    				<div class="d-flex w-100 justify-content-between">
-      					<h5 class="mb-1">${item.name}</h5>
+	    		<c:if test="${item.type == 1}">
+	    			<a href="${pageContext.request.contextPath}/item/${userId}/${item.id}" class="list-group-item list-group-item-action flex-column align-items-start">
+    					<div class="d-flex w-100 justify-content-between">
+      					<h5 class="mb-1">Item: ${item.name}</h5>
       					<small class="text-muted">Expires on: ${item.expiration}</small>
-    				</div>
-    				<small class="text-muted">$${item.price}</small>
-    				<p class="mb-1">${item.description}</p><br>
-  				</a>
- 
+    					</div>
+    					<small class="text-muted">$${item.price}</small>
+    					<p class="mb-1">${item.description}</p><br>
+  					</a>
+	    		</c:if>
+	    		<c:if test="${item.type == 2} ">
+	    			<a href="${pageContext.request.contextPath}/request/${userId}/${item.id}/${item.userId}" class="list-group-item list-group-item-action flex-column align-items-start">
+    					<div class="d-flex w-100 justify-content-between">
+      					<h5 class="mb-1">Request: ${item.name}</h5>
+      					<small class="text-muted">Expires on: ${item.expiration}</small>
+    					</div>
+    					<small class="text-muted">$${item.price}</small>
+    					<p class="mb-1">${item.description}</p><br>
+  					</a>
+	    		</c:if>
 			</div>
 	    
 	    

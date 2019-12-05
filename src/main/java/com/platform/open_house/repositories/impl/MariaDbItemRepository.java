@@ -111,7 +111,7 @@ public class MariaDbItemRepository implements ItemRepository{
 	public Boolean updateItem(Item item) {
 		Integer result;
 		Map<String, Object> params = new HashMap<>();
-		params.put("itemId", item.getItemId());
+		params.put("itemId", item.getId());
 		params.put("userId", item.getUserId());
 		params.put("name", item.getName());
 		params.put("description", item.getDescription());
@@ -151,7 +151,7 @@ public class MariaDbItemRepository implements ItemRepository{
 			SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");  
 			String expiration = formatter.format(date); 
 			
-			item.setItemId(rs.getInt(1));
+			item.setId(rs.getInt(1));
 			item.setUserId(rs.getInt(2));
 			item.setName(rs.getString(3));
 			item.setDescription(rs.getString(4));

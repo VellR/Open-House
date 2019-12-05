@@ -30,9 +30,9 @@ public class MariaDbRequestRepository implements RequestRepository{
 
 		MapSqlParameterSource params = new MapSqlParameterSource();
 		params.addValue("userId", request.getUserId());
-		params.addValue("itemName", request.getItemName());
-		params.addValue("itemDescription", request.getItemDescription());
-		params.addValue("itemPrice", request.getItemPrice());
+		params.addValue("itemName", request.getName());
+		params.addValue("itemDescription", request.getDescription());
+		params.addValue("itemPrice", request.getPrice());
 		params.addValue("barter", request.getBarter());
 		params.addValue("barterItem", request.getBarterItem());
 
@@ -100,11 +100,11 @@ public class MariaDbRequestRepository implements RequestRepository{
 		Integer result;
 		
 		Map<String, Object> params = new HashMap<>();
-		params.put("requestId", request.getRequestId());
+		params.put("requestId", request.getId());
 		params.put("userId", request.getUserId());
-		params.put("itemName", request.getItemName());
-		params.put("itemDescription", request.getItemDescription());
-		params.put("itemPrice", request.getItemPrice());
+		params.put("itemName", request.getName());
+		params.put("itemDescription", request.getDescription());
+		params.put("itemPrice", request.getPrice());
 		params.put("barter", request.getBarter());
 		params.put("barterItem", request.getBarterItem());
 		
@@ -137,11 +137,11 @@ public class MariaDbRequestRepository implements RequestRepository{
 		public Request mapRow(ResultSet rs, int rowNum) throws SQLException {
 			Request request = new Request();
 			
-			request.setRequestId(rs.getInt(1));
+			request.setId(rs.getInt(1));
 			request.setUserId(rs.getInt(2));
-			request.setItemName(rs.getString(3));
-			request.setItemDescription(rs.getString(4));
-			request.setItemPrice(rs.getDouble(5));
+			request.setName(rs.getString(3));
+			request.setDescription(rs.getString(4));
+			request.setPrice(rs.getDouble(5));
 			request.setBarter(rs.getBoolean(6));
 			request.setBarterItem(rs.getString(7));
 			

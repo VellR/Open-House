@@ -106,7 +106,7 @@ public class TradeController {
 		
 		Integer buyerId = userId;
 		Integer sellerId = item.getUserId();
-		Integer itemId = item.getItemId();
+		Integer itemId = item.getId();
 		
 		Trade trade = new Trade(itemId, sellerId, buyerId);
 		tradeRepository.createTrade(trade);

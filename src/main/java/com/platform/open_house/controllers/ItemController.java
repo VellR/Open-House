@@ -2,6 +2,8 @@ package com.platform.open_house.controllers;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -16,13 +18,19 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.platform.open_house.models.Item;
+import com.platform.open_house.models.ItemModel;
+import com.platform.open_house.models.Request;
 import com.platform.open_house.repositories.ItemRepository;
+import com.platform.open_house.repositories.RequestRepository;
 
 @Controller
 public class ItemController {
 	
 	@Autowired
 	private ItemRepository itemRepository;
+	
+	@Autowired
+	private RequestRepository requestRepository;
 	
 	@GetMapping("/userItems/{userId}")
 	public String userItemPage(@PathVariable Integer userId, Model model) {
@@ -47,8 +55,19 @@ public class ItemController {
 	@GetMapping("/home")
 	public String homePage(@ModelAttribute("userId") Integer userId, Model model) throws ClassNotFoundException, IOException, SQLException {
 		List<Item> itemList = itemRepository.getAllItemsNotByUserId(userId);
+		List<Request> requestList = requestRepository.getAllRequestNotByUserId(userId);
 		
-		model.addAttribute("feedItem", itemList);
+		List<ItemModel> itemsAndRequest = new ArrayList<>();
+		itemsAndRequest.addAll(itemList);
+		itemsAndRequest.addAll(requestList);
+		
+		Collections.shuffle(itemsAndRequest);
+		
+		for(ItemModel item : itemsAndRequest) {
+			System.out.println(item.getType());
+		}
+		
+		model.addAttribute("feedItem", itemsAndRequest);
 		model.addAttribute("userId", userId);
 		return "Home";
 	}
