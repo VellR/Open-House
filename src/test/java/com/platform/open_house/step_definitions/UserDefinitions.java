@@ -37,7 +37,8 @@ public class UserDefinitions {
 	@Given("^no User is logged in$")
 	public void no_user_is_logged_in() {
 		///Users/Student/Downloads/chromedriver_win32/chromedriver.exe
-		System.setProperty("webdriver.chrome.driver", "/Users/ivell/Downloads/chromedriver_win32/chromedriver.exe");
+		///Users/ivell/Downloads/chromedriver_win32/chromedriver.exe
+		System.setProperty("webdriver.chrome.driver", "/Users/Student/Downloads/chromedriver_win32/chromedriver.exe");
 		
 		driver = new ChromeDriver();
 		driver.get("http://localhost:8080/open_house/");
@@ -98,6 +99,5 @@ public class UserDefinitions {
 		assertThat(driver.findElement(By.id("firstName.errors")).getText(), is("First Name must be between 2 and 25 characters long."));
 	    assertThat(driver.findElement(By.id("lastName.errors")).getText(), is("Last Name must be between 2 and 25 characters long."));
 	    assertThat(driver.findElement(By.id("username.errors")).getText(), is("Username must be between 5 and 25 characters long."));
-	    
 	}
 }

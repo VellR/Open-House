@@ -129,10 +129,11 @@ public class MariaDbUserRepository implements UserRepository{
 		params.put("email", user.getEmail());
 		params.put("birthday", user.getBirthday());
 		
-		String updateSql = "UPDATE users SET userId = :userId, firstName = :firstName,"
+		String updateSql = "UPDATE users SET firstName = :firstName,"
 				+ " lastName = :lastName, username = :username, password = :password,"
 				+ " location = :location, phoneNumber = :phoneNumber, email = :email,"
-				+ " birthday = :birthday";
+				+ " birthday = :birthday"
+				+ " WHERE(userId = :userId)";
 		
 		result = mariaDbJdbcTemplate.update(updateSql, params);
 		if (result > 0) {
@@ -161,8 +162,7 @@ public class MariaDbUserRepository implements UserRepository{
 			
 			Date date = new java.util.Date(rs.getDate(9).getTime());  
 			SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");  
-			String birthday = formatter.format(date); 
-			
+			String birthday = formatter.format(date); 			
 			
 			user.setUserId(rs.getInt(1));
 			user.setFirstName(rs.getString(2));
@@ -173,17 +173,6 @@ public class MariaDbUserRepository implements UserRepository{
 			user.setPhoneNumber(rs.getString(7));
 			user.setEmail(rs.getString(8));
 			user.setBirthday(birthday);
-			
-			System.out.println(user.getUserId());
-			System.out.println(user.getFirstName());
-			System.out.println(user.getLastName());
-			System.out.println(user.getUsername());
-			System.out.println(user.getPassword());
-			System.out.println(user.getLocation());
-			System.out.println(user.getPhoneNumber());
-			System.out.println(user.getEmail());
-			System.out.println(user.getBirthday());
-			
 			
 			return user;
 		}

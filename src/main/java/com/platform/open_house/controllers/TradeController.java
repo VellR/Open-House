@@ -106,12 +106,17 @@ public class TradeController {
 		
 		Integer buyerId = userId;
 		Integer sellerId = item.getUserId();
-		Integer itemId = item.getId();
 		
-		Trade trade = new Trade(itemId, sellerId, buyerId);
-		tradeRepository.createTrade(trade);
+		if(buyerId != sellerId) {
+			Integer itemId = item.getId();
+			
+			Trade trade = new Trade(itemId, sellerId, buyerId);
+			tradeRepository.createTrade(trade);
+			
+			return "redirect:postUserTrade/"+userId;
+		}
 		
-		return "redirect:postUserTrade/"+userId;
+		return "redirect:userTrades/"+userId;
 	}
 	
 }

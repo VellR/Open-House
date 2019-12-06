@@ -35,7 +35,7 @@ public class UserController {
 			return "Login";
 		}
 		model.addAttribute("userId", user.getUserId());
-		return "redirect:/home";
+		return "redirect:/homeWithId/"+user.getUserId();
 	}
 	
 	@GetMapping("/profile/{userId}")
@@ -50,22 +50,20 @@ public class UserController {
 	}
 	
 	@PostMapping("/updateUser/{userId}")
-	public String updateUser(@Valid @ModelAttribute("user") User user, @PathVariable Integer userId, BindingResult result, Model model) throws SQLException {
+	public String updateUser(@Valid @ModelAttribute("user") User user, @PathVariable Integer userId, @RequestParam String currentPassword, BindingResult result, Model model) throws SQLException {
 		
-		//User currentUser = userRepository.getUserById(userId);
+		User currentUser = userRepository.getUserById(userId);
+		System.out.println(currentUser.getPassword());
+		System.out.println(currentPassword);
 		
-		if(userRepository.updateUser(user)) {
-			return "redirect:/home";
+		if(currentUser.getPassword().equals(currentPassword)) {
+			
+			if(userRepository.updateUser(user)) {
+				return "redirect:/homeWithId/"+ userId;
+			}
 		}
 		
-//		if(currentUser.getPassword() == currentPassword) {
-//			
-//			if(userRepository.updateUser(user)) {
-//				return "redirect:/home";
-//			}
-//		}
-		
-		return "Profile";
+		return "redirect:/profile/"+userId;
 	}
 	
 	@GetMapping("/register")
