@@ -24,11 +24,11 @@
                <form action="${pageContext.request.contextPath}/loginUser" method="POST">
                   <div class="form-group">
                      <label>User Name</label>
-                     <input name="username" id="username" type="text" class="form-control" placeholder="User Name">
+                     <input name="username" id="usernameInput" type="text" class="form-control" placeholder="User Name">
                   </div>
                   <div class="form-group">
                      <label>Password</label>
-                     <input name="password" id="password" type="password" class="form-control" placeholder="Password">
+                     <input name="password" id="passwordInput" type="password" class="form-control" placeholder="Password">
                   </div>
                   <button type="submit" class="btn btn-black">Login</button>
                   <button formmethod="get" formaction="${pageContext.request.contextPath}/register" class="btn btn-secondary">Register</button>

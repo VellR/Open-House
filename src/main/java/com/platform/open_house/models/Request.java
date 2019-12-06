@@ -17,6 +17,15 @@ public class Request extends ItemModel{
 		this.barter = barter;
 		this.barterItem = barterItem;
 	}
+	
+	public Request(String name, String description, Double price, Boolean barter, String barterItem) {
+		this.type = 2;
+		this.name = name;
+		this.description = description;
+		this.price = price;
+		this.barter = barter;
+		this.barterItem = barterItem;
+	}
 
 	public Integer getUserId() {
 		return userId;

@@ -33,6 +33,9 @@
     			<a class="nav-link" href="${pageContext.request.contextPath}/userTrades/${userId}">Active Trades</a>
   			</li>
   			<li class="nav-item">
+    			<a class="nav-link" href="${pageContext.request.contextPath}/request/${userId}">Item Request</a>
+  			</li>
+  			<li class="nav-item">
     			<a class="nav-link" href="${pageContext.request.contextPath}/browesableItems/${userId}">All Listed Items</a>
   			</li>
   			<li class="nav-item">

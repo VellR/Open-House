@@ -25,18 +25,18 @@ public class ItemDefinition {
 	
 	@Then("^login User$")
 	public void login_user() {
-		driver.findElement(By.id("username")).sendKeys("testtest");
-	    driver.findElement(By.id("password")).sendKeys("testtest");
+	    driver.findElement(By.id("usernameInput")).sendKeys("test");
+	    driver.findElement(By.id("passwordInput")).sendKeys("test");
 	    
 	    driver.findElement(By.cssSelector(".btn-black")).click();
 	}
 	
-	@Then("navigate to Item Page")
+	@Then("^navigate to Item Page$")
 	public void navigate_to_item_page() {
 		driver.findElement(By.linkText("My Items")).click();
 	}
 	
-	@Then("create a new item")
+	@Then("^create a new item$")
 	public void create_a_new_item() {
 		driver.findElement(By.id("name")).sendKeys(itemModel.getName());
 	    driver.findElement(By.id("description")).sendKeys(itemModel.getDescription());
@@ -46,7 +46,7 @@ public class ItemDefinition {
 	    driver.findElement(By.cssSelector(".btn")).click();
 	}
 	
-	@Then("verfiy that the item has been created")
+	@Then("^verfiy that the item has been created$")
 	public void verify_that_the_item_has_been_created() {
 		assertThat(driver.findElement(By.cssSelector(".card-title")).getText(), is(itemModel.getName()));
 		assertThat(driver.findElement(By.cssSelector("h4")).getText(), is(itemModel.getPrice()));

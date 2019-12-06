@@ -19,7 +19,7 @@
 	
 		<div class="col-lg-3">
 		
-			<ul class="nav flex-column">
+		<ul class="nav flex-column">
   			<li class="nav-item">
     			<a class="nav-link" href="${pageContext.request.contextPath}/homeWithId/${userId}">Feed</a>
   			</li>
@@ -57,7 +57,7 @@
             		
             <form:form class="form-horizontal" action="${pageContext.request.contextPath}/startTrade/${userId}" method="post" modelAttribute="item" role="form">
             	<fieldset>
-                	<form:input type="hidden" path="itemId" name="itemId" id="itemId" value="${item.itemId}" class="form-control"/>
+                	<form:input type="hidden" path="id" name="id" id="id" value="${item.id}" class="form-control"/>
                 	<form:input type="hidden" path="userId" name="userId" id="userId" value="${item.userId}" class="form-control"/>
                 	<form:input type="hidden" path="name" name="name" id="name" value="${item.name}" class="form-control"/>
                 	<form:input type="hidden" path="description" name="description" id="description" value="${item.description}" class="form-control"/>
@@ -85,7 +85,7 @@
             	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
             	<small class="text-muted">Posted by Anonymous on 3/1/17</small>
             	<hr>
-            	<a href="#" class="btn btn-success">Leave a Review</a>
+            	<a href="#" class="btn btn-success">Reply</a>
           	</div>
         </div>
         <!-- /.card -->

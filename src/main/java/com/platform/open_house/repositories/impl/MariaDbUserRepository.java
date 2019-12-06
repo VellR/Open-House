@@ -76,7 +76,6 @@ public class MariaDbUserRepository implements UserRepository{
 		
 		User user = null;
 		try{
-
 			user = (User)mariaDbJdbcTemplate.queryForObject(
 					selectUserUsernamePassword, params, new UserMapper());
 		}
@@ -174,6 +173,18 @@ public class MariaDbUserRepository implements UserRepository{
 			user.setPhoneNumber(rs.getString(7));
 			user.setEmail(rs.getString(8));
 			user.setBirthday(birthday);
+			
+			System.out.println(user.getUserId());
+			System.out.println(user.getFirstName());
+			System.out.println(user.getLastName());
+			System.out.println(user.getUsername());
+			System.out.println(user.getPassword());
+			System.out.println(user.getLocation());
+			System.out.println(user.getPhoneNumber());
+			System.out.println(user.getEmail());
+			System.out.println(user.getBirthday());
+			
+			
 			return user;
 		}
 	}

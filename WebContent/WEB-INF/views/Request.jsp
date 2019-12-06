@@ -16,7 +16,7 @@
 </head>
 <body>
 	
-	<div class="row">
+<div class="row">
 	<div class="col-2">
 		<ul class="nav flex-column">
   			<li class="nav-item">
@@ -93,7 +93,7 @@
         
         <c:forEach items = "${requestList}" var = "request">
 	    <tr>
-			<td><a href="#">
+			<td><a href="${pageContext.request.contextPath}/userRequest/${userId}/${request.id}">
                     ${request.name}</a></td>
 			<td>${request.description}</td>
 			<td>${request.price}</td>

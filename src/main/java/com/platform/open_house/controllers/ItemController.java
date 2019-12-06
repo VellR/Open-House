@@ -63,10 +63,6 @@ public class ItemController {
 		
 		Collections.shuffle(itemsAndRequest);
 		
-		for(ItemModel item : itemsAndRequest) {
-			System.out.println(item.getType());
-		}
-		
 		model.addAttribute("feedItem", itemsAndRequest);
 		model.addAttribute("userId", userId);
 		return "Home";
@@ -75,8 +71,15 @@ public class ItemController {
 	@GetMapping("/homeWithId/{userId}")
 	public String homeWithIdPage(@PathVariable Integer userId, Model model) throws ClassNotFoundException, IOException, SQLException {
 		List<Item> itemList = itemRepository.getAllItemsNotByUserId(userId);
+		List<Request> requestList = requestRepository.getAllRequestNotByUserId(userId);
 		
-		model.addAttribute("feedItem", itemList);
+		List<ItemModel> itemsAndRequest = new ArrayList<>();
+		itemsAndRequest.addAll(itemList);
+		itemsAndRequest.addAll(requestList);
+		
+		Collections.shuffle(itemsAndRequest);
+		
+		model.addAttribute("feedItems", itemsAndRequest);
 		model.addAttribute("userId", userId);
 		return "Home";
 	}

@@ -15,6 +15,15 @@ public class Item extends ItemModel{
 		this.price = price;
 		this.expiration = expiration;
 	}
+	
+	public Item(Integer userId, String name, String description, Double price, String expiration) {
+		this.type = 1;
+		this.userId = userId;
+		this.name = name;
+		this.description = description;
+		this.price = price;
+		this.expiration = expiration;
+	}
 
 	public Item(String name, String description, Double price, String expiration) {
 		super();
