@@ -20,25 +20,25 @@
 	<div class="col-2">
 		<ul class="nav flex-column">
   			<li class="nav-item">
-    			<a class="nav-link" href="${pageContext.request.contextPath}/homeWithId/${userId}">Feed</a>
+    			<a class="nav-link" id="feed-link" href="${pageContext.request.contextPath}/homeWithId/${userId}">Feed</a>
   			</li>
   			<li class="nav-item">
-    			<a class="nav-link" href="${pageContext.request.contextPath}/userItems/${userId}">My Items</a>
+    			<a class="nav-link" id="items-link" href="${pageContext.request.contextPath}/userItems/${userId}">My Items</a>
   			</li>
   			<li class="nav-item">
-    			<a class="nav-link" href="${pageContext.request.contextPath}/userTrades/${userId}">Active Trades</a>
+    			<a class="nav-link" id="trade-link" href="${pageContext.request.contextPath}/userTrades/${userId}">Active Trades</a>
   			</li>
   			<li class="nav-item">
-    			<a class="nav-link" href="${pageContext.request.contextPath}/request/${userId}">Item Request</a>
+    			<a class="nav-link" id="request-link" href="${pageContext.request.contextPath}/request/${userId}">Item Request</a>
   			</li>
   			<li class="nav-item">
-    			<a class="nav-link" href="${pageContext.request.contextPath}/browesableItems/${userId}">All Listed Items</a>
+    			<a class="nav-link" id="all-items-link" href="${pageContext.request.contextPath}/browesableItems/${userId}">All Listed Items</a>
   			</li>
   			<li class="nav-item">
-    			<a class="nav-link" href="${pageContext.request.contextPath}/profile/${userId}">Profile</a>
+    			<a class="nav-link" id="profile-link" href="${pageContext.request.contextPath}/profile/${userId}">Profile</a>
   			</li>
   			<li class="nav-item">
-    			<a class="nav-link" href="${pageContext.request.contextPath}/">Logout</a>
+    			<a class="nav-link" id="logout-link" href="${pageContext.request.contextPath}/">Logout</a>
   			</li>
 		</ul>
 	</div>
@@ -76,20 +76,19 @@
                          <p><form:errors path="expiration" class="error"/></p>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary btn-block">Add Item</button>
+                <button id="add-item-button" type="submit" class="btn btn-primary btn-block">Add Item</button>
                 </fieldset>
             </form:form>
             <p style="color: red;">${errorMessage}</p>
         </div>
         
-        
         <c:forEach items = "${itemList}" var = "item">
 	    <tr>
-			<td><a href="${pageContext.request.contextPath}/item/${userId}/${item.id}">
+			<td><a id="item-link-${item.name}" href="${pageContext.request.contextPath}/item/${userId}/${item.id}">
 				${item.name}</a></td>
 			<td>$${item.price}</td>
 			<td>${item.description}</td>
-			<td><a href="${pageContext.request.contextPath}/removeItem/${item.id}/${userId}">remove</a></td><br>
+			<td><a id="item-remove-link-${item.name}" href="${pageContext.request.contextPath}/removeItem/${item.id}/${userId}">remove</a></td><br>
 	    </tr>
 	</c:forEach>
 	</div>

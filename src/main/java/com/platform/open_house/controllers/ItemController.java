@@ -110,13 +110,13 @@ public class ItemController {
 		item.setUserId(userId);
 		Integer id = itemRepository.createItem(item);
 		
-		List<Item> itemList = itemRepository.getAllItemsByUserId(userId);
-		model.addAttribute("itemList", itemList);
-		
 		if(id == -1) {
 			model.addAttribute("errorMessage", "Create item failed.");
 			return "UserItem";
 		}
+
+		List<Item> itemList = itemRepository.getAllItemsByUserId(userId);
+		model.addAttribute("itemList", itemList);
 		
 		return "redirect:/userItems/" + userId;
 	}

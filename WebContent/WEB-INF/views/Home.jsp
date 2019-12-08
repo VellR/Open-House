@@ -18,34 +18,35 @@
 	<div class="col-2">
 		<ul class="nav flex-column">
   			<li class="nav-item">
-    			<a class="nav-link" href="${pageContext.request.contextPath}/homeWithId/${userId}">Feed</a>
+    			<a class="nav-link" id="feed-link" href="${pageContext.request.contextPath}/homeWithId/${userId}">Feed</a>
   			</li>
   			<li class="nav-item">
-    			<a class="nav-link" href="${pageContext.request.contextPath}/userItems/${userId}">My Items</a>
+    			<a class="nav-link" id="items-link" href="${pageContext.request.contextPath}/userItems/${userId}">My Items</a>
   			</li>
   			<li class="nav-item">
-    			<a class="nav-link" href="${pageContext.request.contextPath}/userTrades/${userId}">Active Trades</a>
+    			<a class="nav-link" id="trade-link" href="${pageContext.request.contextPath}/userTrades/${userId}">Active Trades</a>
   			</li>
   			<li class="nav-item">
-    			<a class="nav-link" href="${pageContext.request.contextPath}/request/${userId}">Item Request</a>
+    			<a class="nav-link" id="request-link" href="${pageContext.request.contextPath}/request/${userId}">Item Request</a>
   			</li>
   			<li class="nav-item">
-    			<a class="nav-link" href="${pageContext.request.contextPath}/browesableItems/${userId}">All Listed Items</a>
+    			<a class="nav-link" id="all-items-link" href="${pageContext.request.contextPath}/browesableItems/${userId}">All Listed Items</a>
   			</li>
   			<li class="nav-item">
-    			<a class="nav-link" href="${pageContext.request.contextPath}/profile/${userId}">Profile</a>
+    			<a class="nav-link" id="profile-link" href="${pageContext.request.contextPath}/profile/${userId}">Profile</a>
   			</li>
   			<li class="nav-item">
-    			<a class="nav-link" href="${pageContext.request.contextPath}/">Logout</a>
+    			<a class="nav-link" id="logout-link" href="${pageContext.request.contextPath}/">Logout</a>
   			</li>
 		</ul>
 	</div>
 	
 	<div class="col-6">
+	
 		<c:forEach items = "${feedItems}" var = "item">
 	    	<div class="list-group">
 	    		<c:if test="${item.type == 1}">
-	    			<a href="${pageContext.request.contextPath}/item/${userId}/${item.id}" class="list-group-item list-group-item-action flex-column align-items-start">
+	    			<a id="feed-item-${item.name}" href="${pageContext.request.contextPath}/item/${userId}/${item.id}" class="list-group-item list-group-item-action flex-column align-items-start">
     					<div class="d-flex w-100 justify-content-between">
       					<h5 class="mb-1">Item: ${item.name}</h5>
       					<small class="text-muted">Expires on: ${item.expiration}</small>
@@ -55,7 +56,7 @@
   					</a>
 	    		</c:if>
 	    		<c:if test="${item.type == 2}">
-	    			<a href="${pageContext.request.contextPath}/userRequest/${userId}/${item.id}" class="list-group-item list-group-item-action flex-column align-items-start">
+	    			<a id="feed-request-${item.name}" href="${pageContext.request.contextPath}/userRequest/${userId}/${item.id}" class="list-group-item list-group-item-action flex-column align-items-start">
     					<div class="d-flex w-100 justify-content-between">
       					<h5 class="mb-1">Request: ${item.name}</h5>
     					</div>
@@ -64,8 +65,7 @@
   					</a>
 	    		</c:if>
 			</div>
-	    
-	    
+	    	    
 	</c:forEach>
 		
 	</div>

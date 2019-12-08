@@ -76,7 +76,7 @@ public class TradeController {
 	@GetMapping("startTrade/postUserTrade/{userId}")
 	public String postTradePage(@PathVariable Integer userId, Model model) throws SQLException {
 		
-		Map<String, List<Item>> buyerTradeList = new HashMap<>();
+		Map<String, List<Item>> ownerTradeList = new HashMap<>();
 		List<Trade> tradeList = tradeRepository.getAllTradesByOwnerId(userId);
 		
 		for(int i=0; i < tradeList.size(); i++) {
@@ -90,10 +90,28 @@ public class TradeController {
 					buyerItemList.add(itemRepository.getItemById(trade.getItemId()));
 			}
 			
-			buyerTradeList.put(buyerName, buyerItemList);
+			ownerTradeList.put(buyerName, buyerItemList);
 		}
 		
-		model.addAttribute("buyerTradeList", buyerTradeList);
+		Map<String, List<Item>> sellerTradeList = new HashMap<>();
+		tradeList = tradeRepository.getAllTradesByBuyerId(userId);
+		
+		for(int i=0; i < tradeList.size(); i++) {
+			
+			int sellerId = tradeList.get(i).getOwnerUserId();
+			String sellerName = userRepository.getUserById(sellerId).getUsername();
+			
+			List<Item> sellerItemList = new ArrayList<>();
+			for(Trade trade : tradeList) {
+				if(trade.getOwnerUserId() == sellerId)
+					sellerItemList.add(itemRepository.getItemById(trade.getItemId()));
+			}
+			
+			sellerTradeList.put(sellerName, sellerItemList);
+		}
+		
+		model.addAttribute("ownerTradeList", ownerTradeList);
+		model.addAttribute("sellerTradeList", sellerTradeList);
 		model.addAttribute("trade", new Trade());
 		return "Trade";
 	}

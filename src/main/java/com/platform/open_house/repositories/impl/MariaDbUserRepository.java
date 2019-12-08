@@ -119,6 +119,12 @@ public class MariaDbUserRepository implements UserRepository{
 	public Boolean updateUser(User user) {
 		Integer result;
 		Map<String, Object> params = new HashMap<>();
+		
+		String birthday = user.getBirthday();
+		
+		String[] birthArr = birthday.split("/");
+		birthday = birthArr[2] + "/" + birthArr[1] + "/" + birthArr[0];
+		
 		params.put("userId", user.getUserId());
 		params.put("firstName", user.getFirstName());
 		params.put("lastName", user.getLastName());
@@ -127,7 +133,7 @@ public class MariaDbUserRepository implements UserRepository{
 		params.put("location", user.getLocation());
 		params.put("phoneNumber", user.getPhoneNumber());
 		params.put("email", user.getEmail());
-		params.put("birthday", user.getBirthday());
+		params.put("birthday", birthday);
 		
 		String updateSql = "UPDATE users SET firstName = :firstName,"
 				+ " lastName = :lastName, username = :username, password = :password,"

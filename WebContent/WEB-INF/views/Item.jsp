@@ -21,32 +21,32 @@
 		
 		<ul class="nav flex-column">
   			<li class="nav-item">
-    			<a class="nav-link" href="${pageContext.request.contextPath}/homeWithId/${userId}">Feed</a>
+    			<a class="nav-link" id="feed-link" href="${pageContext.request.contextPath}/homeWithId/${userId}">Feed</a>
   			</li>
   			<li class="nav-item">
-    			<a class="nav-link" href="${pageContext.request.contextPath}/userItems/${userId}">My Items</a>
+    			<a class="nav-link" id="items-link" href="${pageContext.request.contextPath}/userItems/${userId}">My Items</a>
   			</li>
   			<li class="nav-item">
-    			<a class="nav-link" href="${pageContext.request.contextPath}/userTrades/${userId}">Active Trades</a>
+    			<a class="nav-link" id="trade-link" href="${pageContext.request.contextPath}/userTrades/${userId}">Active Trades</a>
   			</li>
   			<li class="nav-item">
-    			<a class="nav-link" href="${pageContext.request.contextPath}/request/${userId}">Item Request</a>
+    			<a class="nav-link" id="request-link" href="${pageContext.request.contextPath}/request/${userId}">Item Request</a>
   			</li>
   			<li class="nav-item">
-    			<a class="nav-link" href="${pageContext.request.contextPath}/browesableItems/${userId}">All Listed Items</a>
+    			<a class="nav-link" id="all-items-link" href="${pageContext.request.contextPath}/browesableItems/${userId}">All Listed Items</a>
   			</li>
   			<li class="nav-item">
-    			<a class="nav-link" href="${pageContext.request.contextPath}/profile/${userId}">Profile</a>
+    			<a class="nav-link" id="profile-link" href="${pageContext.request.contextPath}/profile/${userId}">Profile</a>
   			</li>
   			<li class="nav-item">
-    			<a class="nav-link" href="${pageContext.request.contextPath}/">Logout</a>
+    			<a class="nav-link" id="logout-link" href="${pageContext.request.contextPath}/">Logout</a>
   			</li>
 		</ul>
 		</div>
 		
 		<div class="col-lg-9">
 
-        	<div class="card mt-4">
+        	<div id="item-card-${item.name}" class="card mt-4">
           		<img class="card-img-top img-fluid" src="http://placehold.it/900x400" alt="">
           		<div class="card-body">
             		<h3 class="card-title">${item.name}</h3>
@@ -64,31 +64,11 @@
                 	<form:input type="hidden" path="price" name="price" id="price" value="${item.price}" class="form-control"/>
                 	<form:input type="hidden" path="expiration" name="expiration" id="expiration" value="${item.expiration}" class="form-control"/>
                 	
-                	<button type="submit" class="btn btn-success">Start Trade</button>
+                	<button id="start-trade-button" type="submit" class="btn btn-success">Start Trade</button>
             	</fieldset>
             </form:form>
           		</div>
         	</div>
-        <!-- /.card -->
-
-        <div class="card card-outline-secondary my-4">
-        	<div class="card-header">
-            	Messages
-          	</div>
-          	<div class="card-body">
-            	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
-            	<small class="text-muted">Posted by Anonymous on 3/1/17</small>
-            	<hr>
-            	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
-            	<small class="text-muted">Posted by Anonymous on 3/1/17</small>
-            	<hr>
-            	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
-            	<small class="text-muted">Posted by Anonymous on 3/1/17</small>
-            	<hr>
-            	<a href="#" class="btn btn-success">Reply</a>
-          	</div>
-        </div>
-        <!-- /.card -->
 
       </div>
 		

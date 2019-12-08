@@ -17,25 +17,25 @@
 	<div class="col-2">
 		<ul class="nav flex-column">
   			<li class="nav-item">
-    			<a class="nav-link" href="${pageContext.request.contextPath}/homeWithId/${userId}">Feed</a>
+    			<a class="nav-link" id="feed-link" href="${pageContext.request.contextPath}/homeWithId/${userId}">Feed</a>
   			</li>
   			<li class="nav-item">
-    			<a class="nav-link" href="${pageContext.request.contextPath}/userItems/${userId}">My Items</a>
+    			<a class="nav-link" id="items-link" href="${pageContext.request.contextPath}/userItems/${userId}">My Items</a>
   			</li>
   			<li class="nav-item">
-    			<a class="nav-link" href="${pageContext.request.contextPath}/userTrades/${userId}">Active Trades</a>
+    			<a class="nav-link" id="trade-link" href="${pageContext.request.contextPath}/userTrades/${userId}">Active Trades</a>
   			</li>
   			<li class="nav-item">
-    			<a class="nav-link" href="${pageContext.request.contextPath}/request/${userId}">Item Request</a>
+    			<a class="nav-link" id="request-link" href="${pageContext.request.contextPath}/request/${userId}">Item Request</a>
   			</li>
   			<li class="nav-item">
-    			<a class="nav-link" href="${pageContext.request.contextPath}/browesableItems/${userId}">All Listed Items</a>
+    			<a class="nav-link" id="all-items-link" href="${pageContext.request.contextPath}/browesableItems/${userId}">All Listed Items</a>
   			</li>
   			<li class="nav-item">
-    			<a class="nav-link" href="${pageContext.request.contextPath}/profile/${userId}">Profile</a>
+    			<a class="nav-link" id="profile-link" href="${pageContext.request.contextPath}/profile/${userId}">Profile</a>
   			</li>
   			<li class="nav-item">
-    			<a class="nav-link" href="${pageContext.request.contextPath}/">Logout</a>
+    			<a class="nav-link" id="logout-link" href="${pageContext.request.contextPath}/">Logout</a>
   			</li>
 		</ul>
 	</div>
@@ -44,7 +44,7 @@
 		<h4>My Active Buys</h4>
 		<c:forEach items = "${sellerTradeList}" var = "trade">
 	    	<tr>
-				<td><a href="#">${trade.key}</a></td><br>
+				<td><a id="seller-link-${trade.key}" href="#">${trade.key}</a></td><br>
 				<c:forEach items="${trade.value}" var="item">
         			<td>${item.name}</td><br>
 					<td>${item.price}</td><br>

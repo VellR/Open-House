@@ -85,7 +85,7 @@
                          <p><form:errors path="phoneNumber" class="error"/></p>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary btn-block">Register</button>
+                <button id="register-button" type="submit" class="btn btn-primary btn-block">Register</button>
                 </fieldset>
             </form:form>
             <p style="color: red;">${errorMessage}</p>
