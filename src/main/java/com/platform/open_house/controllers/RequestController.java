@@ -3,6 +3,8 @@ package com.platform.open_house.controllers;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -54,7 +56,7 @@ public class RequestController {
 	}
 	
 	@PostMapping("/addRequest/{userId}")
-	public String addRequest(@ModelAttribute("request") Request request, @PathVariable Integer userId, Model model, BindingResult result) {
+	public String addRequest(@Valid @ModelAttribute("request") Request request, BindingResult result, @PathVariable Integer userId, Model model) {
 		
 		if(result.hasErrors()) {
 			return "Request";

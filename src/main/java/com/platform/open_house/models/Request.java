@@ -1,6 +1,10 @@
 package com.platform.open_house.models;
 
+import javax.validation.constraints.NotNull;
+
 public class Request extends ItemModel{
+	
+	@NotNull(message="Are you open to barter?")
 	Boolean barter;
 	String barterItem;
 	
@@ -15,7 +19,13 @@ public class Request extends ItemModel{
 		this.description = description;
 		this.price = price;
 		this.barter = barter;
-		this.barterItem = barterItem;
+		
+		if(barter) {
+			this.barterItem = barterItem;
+		}else {
+			this.barterItem = "";
+		}
+		
 	}
 	
 	public Request(String name, String description, Double price, Boolean barter, String barterItem) {
@@ -24,7 +34,13 @@ public class Request extends ItemModel{
 		this.description = description;
 		this.price = price;
 		this.barter = barter;
-		this.barterItem = barterItem;
+
+		if(barter) {
+			this.barterItem = barterItem;
+		}else {
+			this.barterItem = "";
+		}
+		
 	}
 
 	public Integer getUserId() {

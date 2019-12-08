@@ -50,11 +50,9 @@ public class UserController {
 	}
 	
 	@PostMapping("/updateUser/{userId}")
-	public String updateUser(@Valid @ModelAttribute("user") User user, @PathVariable Integer userId, @RequestParam String currentPassword, BindingResult result, Model model) throws SQLException {
+	public String updateUser(@Valid @ModelAttribute("user") User user,  BindingResult result, @PathVariable Integer userId, @RequestParam String currentPassword, Model model) throws SQLException {
 		
 		User currentUser = userRepository.getUserById(userId);
-		System.out.println(currentUser.getPassword());
-		System.out.println(currentPassword);
 		
 		if(currentUser.getPassword().equals(currentPassword)) {
 			
@@ -73,9 +71,13 @@ public class UserController {
 	}
 	
 	@PostMapping("/registerUser")
-	public String registerUser(@Valid @ModelAttribute("user") User user, BindingResult result, Model model) {
-		
+	public String registerUser(@Valid @ModelAttribute("user") User user, BindingResult result, @RequestParam String confirmPassword, Model model) {
 		if(result.hasErrors()) {
+			return "Registration";
+		}
+		
+		if(!user.getPassword().equals(confirmPassword)) {
+			model.addAttribute("confirmPasswordErrorMessage", "Passwords do not match.");
 			return "Registration";
 		}
 			

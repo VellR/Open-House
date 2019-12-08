@@ -76,10 +76,27 @@ public class SmokeDefinition {
 	    driver.findElement(By.id("email")).sendKeys(user1.getEmail());
 	    driver.findElement(By.id("username")).sendKeys(user1.getUsername());
 	    driver.findElement(By.id("password")).sendKeys(user1.getPassword());
-	    driver.findElement(By.cssSelector(".form-group:nth-child(7) #password")).sendKeys(user1.getPassword());
+	    driver.findElement(By.id("confirmPassword")).sendKeys(user1.getPassword());
 	    driver.findElement(By.id("location")).sendKeys(user1.getLocation());
 	    driver.findElement(By.id("birthday")).sendKeys(user1.getBirthday());
 	    driver.findElement(By.id("phoneNumber")).sendKeys(user1.getPhoneNumber());
+	    
+	    driver.findElement(By.id("register-button")).click();
+	}
+	
+	@Then("^Register User Two$")
+	public void register_user_two() {
+		driver.findElement(By.id("register-button")).click();
+		
+	    driver.findElement(By.id("firstName")).sendKeys(user2.getFirstName());
+	    driver.findElement(By.id("lastName")).sendKeys(user2.getLastName());
+	    driver.findElement(By.id("email")).sendKeys(user2.getEmail());
+	    driver.findElement(By.id("username")).sendKeys("janedoe");
+	    driver.findElement(By.id("password")).sendKeys(user2.getPassword());
+	    driver.findElement(By.id("confirmPassword")).sendKeys(user2.getPassword());
+	    driver.findElement(By.id("location")).sendKeys(user2.getLocation());
+	    driver.findElement(By.id("birthday")).sendKeys(user2.getBirthday());
+	    driver.findElement(By.id("phoneNumber")).sendKeys(user2.getPhoneNumber());
 	    
 	    driver.findElement(By.id("register-button")).click();
 	}
@@ -177,24 +194,7 @@ public class SmokeDefinition {
 	    
 	    assertThat(driver.getTitle(), is("Home"));  
 	}
-	
-	@Then("^Register User Two$")
-	public void register_user_two() {
-		driver.findElement(By.id("register-button")).click();
-		
-	    driver.findElement(By.id("firstName")).sendKeys(user2.getFirstName());
-	    driver.findElement(By.id("lastName")).sendKeys(user2.getLastName());
-	    driver.findElement(By.id("email")).sendKeys(user2.getEmail());
-	    driver.findElement(By.id("username")).sendKeys("janedoe");
-	    driver.findElement(By.id("password")).sendKeys(user2.getPassword());
-	    driver.findElement(By.cssSelector(".form-group:nth-child(7) #password")).sendKeys(user2.getPassword());
-	    driver.findElement(By.id("location")).sendKeys(user2.getLocation());
-	    driver.findElement(By.id("birthday")).sendKeys(user2.getBirthday());
-	    driver.findElement(By.id("phoneNumber")).sendKeys(user2.getPhoneNumber());
-	    
-	    driver.findElement(By.id("register-button")).click();
-	}
-	
+
 	@Then("^Login User Two$")
 	public void login_user_two() {
 		driver.findElement(By.id("username-input")).sendKeys("janedoe");

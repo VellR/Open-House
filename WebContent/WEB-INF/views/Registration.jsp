@@ -27,68 +27,69 @@
                     <label for="firstName" class="col-sm-3 control-label">First Name</label>
                     <div class="col-sm-9">
                         <form:input type="text" path="firstName" name="firstName" id="firstName" placeholder="First Name" class="form-control"/>
-                         <p><form:errors path="firstName" class="error"/></p>
+                         <p style="color: red;" id="firstName-error" ><form:errors path="firstName" class="error"/></p>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="lastName" class="col-sm-3 control-label">Last Name</label>
                     <div class="col-sm-9">
                         <form:input path="lastName" type="text" name="lastName" id="lastName" placeholder="Last Name" class="form-control"/>
-                         <p><form:errors path="lastName" class="error"/></p>
+                         <p style="color: red;" id="lastName-error" ><form:errors path="lastName" class="error"/></p>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="email" class="col-sm-3 control-label">Email* </label>
                     <div class="col-sm-9">
                         <form:input path="email" type="email" name="email" id="email" placeholder="Email" class="form-control"/>
-                         <p><form:errors path="email" class="error"/></p>
+                         <p style="color: red;" id="email-error" ><form:errors path="email" class="error"/></p>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="username" class="col-sm-3 control-label">Username* </label>
                     <div class="col-sm-9">
                         <form:input path="username" type="text" name="username" id="username" placeholder="Username" class="form-control"/>
-                         <p><form:errors path="username" class="error"/></p>
+                         <p style="color: red;" id="username-error" ><form:errors path="username" class="error"/></p>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="password" class="col-sm-3 control-label">Password*</label>
                     <div class="col-sm-9">
                         <form:input path="password" type="password" name="password" id="password" placeholder="Password" class="form-control"/>
-                         <p><form:errors path="password" class="error"/></p>
+                         <p style="color: red;" id="password-error" ><form:errors path="password" class="error"/></p>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="password" class="col-sm-3 control-label">Confirm Password*</label>
+                    <label for="confirmPassword" class="col-sm-3 control-label">Confirm Password*</label>
                     <div class="col-sm-9">
-                        <input type="password" id="password" placeholder="Password" class="form-control">
+                        <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Password" class="form-control">
+                        <p id="confirmPasswordErrorMessage" style="color: red;">${confirmPasswordErrorMessage}</p>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="location" class="col-sm-3 control-label">Location </label>
                     <div class="col-sm-9">
                         <form:input path="location" type="text" name="location" id="location" placeholder="Location" class="form-control"/>
-                         <p><form:errors path="location" class="error"/></p>
+                         <p style="color: red;" id="location-error" ><form:errors path="location" class="error"/></p>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="birthDate" class="col-sm-3 control-label">Date of Birth*</label>
                     <div class="col-sm-9">
                         <form:input path="birthday" type="date" name="birthday" id="birthday" class="form-control"/>
-                         <p><form:errors path="birthday" class="error"/></p>
+                         <p style="color: red;" id="birthday-error" ><form:errors path="birthday" class="error"/></p>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="phoneNumber" class="col-sm-3 control-label">Phone number </label>
                     <div class="col-sm-9">
                         <form:input path="phoneNumber" type="tel" name="phoneNumber" id="phoneNumber" placeholder="Phone number" class="form-control"/>
-                         <p><form:errors path="phoneNumber" class="error"/></p>
+                         <p style="color: red;" id="phoneNumber-error" ><form:errors path="phoneNumber" class="error"/></p>
                     </div>
                 </div>
                 <button id="register-button" type="submit" class="btn btn-primary btn-block">Register</button>
                 </fieldset>
             </form:form>
-            <p style="color: red;">${errorMessage}</p>
+            <p id="errorMessage" style="color: red;">${errorMessage}</p>
         </div>
 
 </body>

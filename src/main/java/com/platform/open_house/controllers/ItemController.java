@@ -101,7 +101,7 @@ public class ItemController {
 	}
 	
 	@PostMapping("/addItem/{userId}")
-	public String addItem(@Valid @ModelAttribute("item") Item item, @PathVariable Integer userId, Model model, BindingResult result) {
+	public String addItem(@Valid @ModelAttribute("item") Item item, BindingResult result, @PathVariable Integer userId, Model model) {
 		
 		if(result.hasErrors()) {
 			return "UserItem";

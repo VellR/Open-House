@@ -52,21 +52,21 @@
                     <label for="name" class="col-sm-3 control-label">Item Name</label>
                     <div class="col-sm-9">
                         <form:input type="text" path="name" name="name" id="name" placeholder="Item name" class="form-control"/>
-                         <p><form:errors path="name" class="error"/></p>
+                         <p style="color: red;"><form:errors path="name" class="error"/></p>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="description" class="col-sm-3 control-label">Item Description</label>
                     <div class="col-sm-9">
                         <form:input path="description" type="textarea" name="description" id="description" placeholder="Item description..." class="form-control"/>
-                         <p><form:errors path="description" class="error"/></p>
+                         <p style="color: red;"><form:errors path="description" class="error"/></p>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="price" class="col-sm-3 control-label">Item Price</label>
                     <div class="col-sm-9">
                         <form:input path="price" type="text" name="price" id="price" placeholder="0.00" class="form-control"/>
-                         <p><form:errors path="price" class="error"/></p>
+                         <p style="color: red;"><form:errors path="price" class="error"/></p>
                     </div>
                 </div>
                 <div class="form-group">
@@ -74,14 +74,14 @@
                     <div class="col-sm-9">
                        Yes <form:radiobutton path="barter" id="yes" value="true" class="form-control"/>
                        No  <form:radiobutton path="barter" id="no" value="false" class="form-control"/>
-                        <p><form:errors path="barter" class="error"/></p>
+                        <p style="color: red;"><form:errors path="barter" class="error"/></p>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="barterItem" class="col-sm-3 control-label">Preferred Barter Item:</label>
                     <div class="col-sm-9">
                         <form:input path="barterItem" type="text" name="barterItem" id="barterItem" placeholder="Item Name" class="form-control"/>
-                         <p><form:errors path="barterItem" class="error"/></p>
+                         <p style="color: red;"><form:errors path="barterItem" class="error"/></p>
                     </div>
                 </div>
                 <button id="make-request-button" type="submit" class="btn btn-primary btn-block">Make Request</button>
