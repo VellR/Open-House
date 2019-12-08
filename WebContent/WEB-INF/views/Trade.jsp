@@ -41,8 +41,8 @@
 	</div>
 	
 	<div class="col-6">
-		<h4>My Active Trades</h4>
-		<c:forEach items = "${buyerTradeList}" var = "trade">
+		<h4>My Active Buys</h4>
+		<c:forEach items = "${sellerTradeList}" var = "trade">
 	    	<tr>
 				<td><a href="#">${trade.key}</a></td><br>
 				<c:forEach items="${trade.value}" var="item">
@@ -54,10 +54,9 @@
 	    	</tr><br>
 		</c:forEach>
 		
-		<h4>My Requested Trades</h4>
-		<c:forEach items = "${sellerTradeList}" var = "trade">
+		<h4>My Active Sells</h4>
+		<c:forEach items = "${ownerTradeList}" var = "trade">
 	    	<tr>
-				<td><a href="#">${trade.key}</a></td><br>
 				<c:forEach items="${trade.value}" var="item">
         			<td>${item.name}</td><br>
 					<td>${item.price}</td><br>

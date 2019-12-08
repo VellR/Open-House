@@ -11,7 +11,7 @@ public interface TradeRepository {
 	Trade getTradeById(Integer id) throws SQLException;
 	
 	List<Trade> getAllTrades() throws ClassNotFoundException, IOException, SQLException;
-	List<Trade> getAllTradesBySellerId(int userId);
+	List<Trade> getAllTradesByOwnerId(int userId);
 	List<Trade> getAllTradesByBuyerId(int userId);
 	
 	Boolean updateTrade(Trade item);

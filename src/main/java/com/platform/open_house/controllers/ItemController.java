@@ -118,7 +118,7 @@ public class ItemController {
 			return "UserItem";
 		}
 		
-		return "UserItem";
+		return "redirect:/userItems/" + userId;
 	}
 	
 	@GetMapping("/removeItem/{itemId}/{userId}")

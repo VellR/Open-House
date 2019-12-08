@@ -9,21 +9,21 @@ public class Trade {
 	private Integer tradeId;
 	
 	private Integer itemId;
-	private Integer sellerId;
+	private Integer ownerUserId;
 	private Integer buyerId;
 	
 	public Trade() {}
 	
-	public Trade(Integer tradeId, Integer itemId, Integer sellerId, Integer buyerId) {
+	public Trade(Integer tradeId, Integer itemId, Integer ownerUserId, Integer buyerId) {
 		this.tradeId = tradeId;
 		this.itemId = itemId;
-		this.sellerId = sellerId;
+		this.ownerUserId = ownerUserId;
 		this.buyerId = buyerId;
 	}
 	
-	public Trade(Integer itemId, Integer sellerId, Integer buyerId) {
+	public Trade(Integer itemId, Integer ownerUserId, Integer buyerId) {
 		this.itemId = itemId;
-		this.sellerId = sellerId;
+		this.ownerUserId = ownerUserId;
 		this.buyerId = buyerId;
 	}
 
@@ -43,12 +43,12 @@ public class Trade {
 		this.itemId = itemId;
 	}
 
-	public Integer getSellerId() {
-		return sellerId;
+	public Integer getOwnerUserId() {
+		return ownerUserId;
 	}
 
-	public void setSellerId(Integer sellerId) {
-		this.sellerId = sellerId;
+	public void setOwnerUserId(Integer ownerUserId) {
+		this.ownerUserId = ownerUserId;
 	}
 
 	public Integer getBuyerId() {

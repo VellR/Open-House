@@ -30,11 +30,11 @@ public class MariaDbTradeRepository implements TradeRepository{
 
 		MapSqlParameterSource params = new MapSqlParameterSource();
 		params.addValue("itemId", trade.getItemId());
-		params.addValue("sellerId", trade.getSellerId());
-		params.addValue("buyerId", trade.getBuyerId());
+		params.addValue("ownerUserId", trade.getOwnerUserId());
+		params.addValue("buyerUserId", trade.getBuyerId());
 
-		String createTradeSql = "INSERT INTO trades (itemId, sellerId, buyerId) VALUES "
-				+ "(:itemId, :sellerId, :buyerId)";
+		String createTradeSql = "INSERT INTO trades (itemId, ownerUserId, buyerUserId) VALUES "
+				+ "(:itemId, :ownerUserId, :buyerUserId)";
 
 		KeyHolder keyHolder = new GeneratedKeyHolder();
 		Integer createResult = mariaDbJdbcTemplate.update(createTradeSql, 
@@ -48,8 +48,8 @@ public class MariaDbTradeRepository implements TradeRepository{
 	}
 	
 	@Override
-	public List<Trade> getAllTradesBySellerId(int userId) {
-		String selectTrades = "SELECT * FROM trades WHERE sellerId=" + userId;
+	public List<Trade> getAllTradesByOwnerId(int userId) {
+		String selectTrades = "SELECT * FROM trades WHERE ownerUserId=" + userId;
 
 		List<Trade> result = mariaDbJdbcTemplate.query(selectTrades, new TradeMapper());
 		return result;
@@ -57,7 +57,7 @@ public class MariaDbTradeRepository implements TradeRepository{
 	
 	@Override
 	public List<Trade> getAllTradesByBuyerId(int userId) {
-		String selectTrades = "SELECT * FROM trades WHERE buyerId=" + userId;
+		String selectTrades = "SELECT * FROM trades WHERE buyerUserId=" + userId;
 
 		List<Trade> result = mariaDbJdbcTemplate.query(selectTrades, new TradeMapper());
 		return result;
@@ -97,11 +97,11 @@ public class MariaDbTradeRepository implements TradeRepository{
 		Map<String, Object> params = new HashMap<>();
 		params.put("tradeId", trade.getTradeId());
 		params.put("itemId", trade.getItemId());
-		params.put("sellerId", trade.getSellerId());
-		params.put("buyerId", trade.getBuyerId());
+		params.put("ownerUserId", trade.getOwnerUserId());
+		params.put("buyerUserId", trade.getBuyerId());
 		
 		String updateSql = "UPDATE trades SET tradeId = :tradeId, itemId = :itemId, sellerId = :sellerId,"
-				+ " buyerId = :buyerId";
+				+ " buyerUserId = :buyerUserId";
 		
 		result = mariaDbJdbcTemplate.update(updateSql, params);
 		if (result > 0) {
@@ -129,7 +129,7 @@ public class MariaDbTradeRepository implements TradeRepository{
 			Trade trade = new Trade();
 			trade.setTradeId(rs.getInt(1));
 			trade.setItemId(rs.getInt(2));
-			trade.setSellerId(rs.getInt(3));
+			trade.setOwnerUserId(rs.getInt(3));
 			trade.setBuyerId(rs.getInt(4));
 			return trade;
 		}
