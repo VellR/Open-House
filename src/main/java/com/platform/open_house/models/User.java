@@ -6,6 +6,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 public class User {
@@ -14,10 +15,12 @@ public class User {
 	Integer userId;
 	
 	@Size(min=2, max=25,  message="First Name must be between 2 and 25 characters long.")
+	@Pattern(regexp="^[A-Za-z]+$", message="First name cannot contain numbers.")
 	@NotEmpty(message="First Name is required.")
 	@NotNull(message="First Name is required.")
 	private String firstName;
 	@Size(min=2, max=25,  message="Last Name must be between 2 and 25 characters long.")
+	@Pattern(regexp="^[A-Za-z]+$", message="Last name cannot contain numbers.")
 	@NotEmpty(message="Last Name is required.")
 	@NotNull(message="Last Name is required.")
 	private String lastName;
@@ -26,12 +29,13 @@ public class User {
 	@NotNull(message="Username is required.")
 	private String username;
 	@Size(min=5, max=50,  message="Password must be between 5 and 50 characters long.")
-	@NotEmpty(message="Username is required.")
-	@NotNull(message="Username is required.")
+	@NotEmpty(message="Password is required.")
+	@NotNull(message="Password is required.")
 	private String password;
 	@Size(min=5, max=50,  message="Location must be between 5 and 50 characters long.")
 	private String location;
 	@Size(min=10, max=12,  message="Phone Number must be between 10 and 12 characters long.")
+	@Pattern(regexp="^[0-9]+$", message="Phonenumber cannot contain letters.")
 	private String phoneNumber;
 	@Email(message="Please enter a valid email.")
 	@NotEmpty(message="Email is required.")
