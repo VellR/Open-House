@@ -47,7 +47,7 @@
 				<td><a id="seller-link-${trade.key}" href="#">${trade.key}</a></td><br>
 				<c:forEach items="${trade.value}" var="item">
         			<td>${item.name}</td><br>
-					<td>${item.price}</td><br>
+					<td>$${item.price}</td><br>
 					<td>${item.description}</td><br>
 					<td>${item.expiration}</td><br>
 				</c:forEach>
@@ -59,7 +59,7 @@
 	    	<tr>
 				<c:forEach items="${trade.value}" var="item">
         			<td>${item.name}</td><br>
-					<td>${item.price}</td><br>
+					<td>$${item.price}</td><br>
 					<td>${item.description}</td><br>
 					<td>${item.expiration}</td><br>
 				</c:forEach>
