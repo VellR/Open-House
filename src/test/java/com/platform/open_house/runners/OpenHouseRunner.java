@@ -7,6 +7,6 @@ import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-		features = "src/test/java/com/platform/open_house/feature/SmokeTest.feature",
+		features = "src/test/java/com/platform/open_house/feature/RegisterUser.feature",
 		glue = "com/platform/open_house/step_definitions")
 public class OpenHouseRunner {}

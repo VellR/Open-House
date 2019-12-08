@@ -49,6 +49,7 @@
                     <div class="col-sm-9">
                         <form:input path="username" type="text" name="username" id="username" placeholder="Username" class="form-control"/>
                          <p style="color: red;" id="username-error" ><form:errors path="username" class="error"/></p>
+                         <p id="usernameTakenError" style="color: red;">${usernameTakenError}</p>
                     </div>
                 </div>
                 <div class="form-group">

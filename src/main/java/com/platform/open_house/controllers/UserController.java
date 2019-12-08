@@ -76,6 +76,14 @@ public class UserController {
 			return "Registration";
 		}
 		
+		String username = user.getUsername();
+		User existingUser = userRepository.getUserByUsername(username);
+		
+		if(existingUser != null) {
+			model.addAttribute("usernameTakenError", "That username is taken, try another");
+			return "Registration";
+		}
+		
 		if(!user.getPassword().equals(confirmPassword)) {
 			model.addAttribute("confirmPasswordErrorMessage", "Passwords do not match.");
 			return "Registration";

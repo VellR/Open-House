@@ -106,6 +106,26 @@ public class MariaDbUserRepository implements UserRepository{
 		
 		return user;
 	}
+	
+	@Override
+	public User getUserByUsername(String username) {
+		String selectUserByUsername = "SELECT * FROM users WHERE username = :username";
+		
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("username", username);
+		User user = null;
+		try{
+
+			user = (User)mariaDbJdbcTemplate.queryForObject(
+					selectUserByUsername, params, new UserMapper());
+		}
+		catch (EmptyResultDataAccessException e)
+		{
+			System.out.println(e.getMessage());
+		}
+		
+		return user;
+	}
 
 	@Override
 	public List<User> getAllUsers() throws ClassNotFoundException, IOException, SQLException {

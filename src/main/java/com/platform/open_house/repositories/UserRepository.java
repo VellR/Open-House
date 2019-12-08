@@ -11,6 +11,7 @@ public interface UserRepository {
 	
 	User loginUser(String username, String password);
 	User getUserById(Integer id) throws SQLException;
+	User getUserByUsername(String username);
 	
 	List<User> getAllUsers() throws ClassNotFoundException, IOException, SQLException;
 	
