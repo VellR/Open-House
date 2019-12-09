@@ -3,7 +3,6 @@ package com.platform.open_house.step_definitions;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-import org.junit.AfterClass;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -11,7 +10,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import com.platform.open_house.models.User;
 
-import cucumber.api.java.After;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.junit.Cucumber;
@@ -24,17 +22,6 @@ public class SmokeDefinition {
 	User user2 = new User("Jane", "Doe", "janedoe", "test1234", "Dallas, Texas", "4691234567", "janedoe@test.com", "03031993");
 	
 	String passwordChange = "changetest";
-	
-	@AfterClass
-	public void breakdown() {
-		driver.quit();
-	}
-	
-	@After
-	public void logout() {
-		driver.findElement(By.id("logout-link")).click();
-		driver.close();
-	}
 	
 	@Given("^User One does not exist$")
 	public void user_one_does_not_exist() {

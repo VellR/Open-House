@@ -12,7 +12,7 @@ public class Request extends ItemModel{
 		this.type = 2;
 	}
 	
-	public Request(Integer userId, String name, String description, Double price, Boolean barter, String barterItem) {
+	public Request(Integer userId, String name, String description, String price, Boolean barter, String barterItem) {
 		this.type = 2;
 		this.userId = userId;
 		this.name = name;
@@ -28,7 +28,7 @@ public class Request extends ItemModel{
 		
 	}
 	
-	public Request(String name, String description, Double price, Boolean barter, String barterItem) {
+	public Request(String name, String description, String price, Boolean barter, String barterItem) {
 		this.type = 2;
 		this.name = name;
 		this.description = description;

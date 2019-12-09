@@ -6,7 +6,7 @@ public class Item extends ItemModel{
 		this.type = 1;
 	}
 	
-	public Item(Integer itemId, Integer userId, String name, String description, Double price, String expiration) {
+	public Item(Integer itemId, Integer userId, String name, String description, String price, String expiration) {
 		this.type = 1;
 		this.id = itemId;
 		this.userId = userId;
@@ -16,7 +16,7 @@ public class Item extends ItemModel{
 		this.expiration = expiration;
 	}
 	
-	public Item(Integer userId, String name, String description, Double price, String expiration) {
+	public Item(Integer userId, String name, String description, String price, String expiration) {
 		this.type = 1;
 		this.userId = userId;
 		this.name = name;
@@ -25,7 +25,7 @@ public class Item extends ItemModel{
 		this.expiration = expiration;
 	}
 
-	public Item(String name, String description, Double price, String expiration) {
+	public Item(String name, String description, String price, String expiration) {
 		super();
 	}
 

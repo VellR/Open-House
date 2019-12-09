@@ -141,7 +141,7 @@ public class MariaDbRequestRepository implements RequestRepository{
 			request.setUserId(rs.getInt(2));
 			request.setName(rs.getString(3));
 			request.setDescription(rs.getString(4));
-			request.setPrice(rs.getDouble(5));
+			request.setPrice(rs.getString(5));
 			request.setBarter(rs.getBoolean(6));
 			request.setBarterItem(rs.getString(7));
 			

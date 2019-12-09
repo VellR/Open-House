@@ -16,7 +16,7 @@ import cucumber.api.junit.Cucumber;
 @RunWith(Cucumber.class)
 public class RequestDefinition {
 	private WebDriver driver;
-	private Request modelRequest= new Request("Test Request", "Test Request Description", 1.11, true, "Test Barter Item");
+	private Request modelRequest= new Request("Test Request", "Test Request Description", "1.11", true, "Test Barter Item");
 	
 	@AfterClass
 	public void breakdown() {

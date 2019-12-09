@@ -15,7 +15,6 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import cucumber.api.java.After;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.junit.Cucumber;
@@ -296,12 +295,6 @@ public class RegistrationDefinitions {
 	@Then("^Verify the username error$")
 	public void verify_the_username_error() {
 		assertThat(driver.findElement(By.id("usernameTakenError")).getText(), containsString("That username is taken, try another"));
-	}
-	
-	@After
-	public void closeWindow() {
-		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-		driver.quit();
 	}
 	
 	private String randomString(int length) {

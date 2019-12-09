@@ -155,7 +155,7 @@ public class MariaDbItemRepository implements ItemRepository{
 			item.setUserId(rs.getInt(2));
 			item.setName(rs.getString(3));
 			item.setDescription(rs.getString(4));
-			item.setPrice(rs.getDouble(5));
+			item.setPrice(rs.getString(5));
 			item.setExpiration(expiration);
 			return item;
 		}
