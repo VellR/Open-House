@@ -33,7 +33,7 @@ public class User {
 	private String password;
 	@Size(min=5, max=50,  message="Location must be between 5 and 50 characters long.")
 	private String location;
-	@Size(min=10, max=12,  message="Phone Number must be between 10 and 12 characters long.")
+	@Size(min=10, max=11,  message="Phone Number must be between 10 and 12 characters long.")
 	@Pattern(regexp="^[0-9]+$", message="Phonenumber cannot contain letters.")
 	private String phoneNumber;
 	@Email(message="Please enter a valid email.")
